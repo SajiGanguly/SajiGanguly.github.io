@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-retro-bg: var(--color-bg);
+  --color-retro-text: var(--color-text);
+  --color-retro-primary: var(--color-primary);
+  --color-retro-secondary: var(--color-secondary);
+  --color-retro-accent: var(--color-accent);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-outfit: var(--font-outfit), sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
   }
 }
 
+:root {
+  /* Default - Retro Revival */
+  --color-bg: #fff0f5;
+  --color-text: #1a051a;
+  --color-primary: #ffb6c1;
+  --color-secondary: #4a0e4e;
+  --color-accent: #9fe2bf;
+}
+
+html[data-theme='dark'] {
+  --color-bg: #1a051a;
+  --color-text: #fdf4ff;
+  --color-primary: #4a0e4e;
+  --color-secondary: #9fe2bf;
+  --color-accent: #ffb6c1;
+}
+
+html[data-theme='mint'] {
+  --color-bg: #eafff5;
+  --color-text: #301934;
+  --color-primary: #9fe2bf;
+  --color-secondary: #ffb6c1;
+  --color-accent: #4a0e4e;
+}
+
+@layer utilities {
+  .highlight-bg {
+    position: relative;
+  }
+
+  .highlight-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: -2%;
+    width: 104%;
+    height: 35%;
+    background-color: var(--color-accent);
+    z-index: -1;
+    transform: rotate(-1deg);
+    opacity: 0.8;
+    transition: background-color 0.5s ease;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border: 3px solid var(--color-bg);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
 }

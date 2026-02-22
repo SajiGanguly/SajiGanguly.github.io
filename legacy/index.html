@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saji Ganguly | Aspiring Data Analyst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Spline 3D Viewer Script -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js"></script>
+    <!-- Rive Canvas Script -->
+    <script src="https://unpkg.com/@rive-app/canvas@2.9.1"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        retro: {
+                            bg: 'var(--color-bg)',
+                            text: 'var(--color-text)',
+                            primary: 'var(--color-primary)',
+                            secondary: 'var(--color-secondary)',
+                            accent: 'var(--color-accent)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Space Grotesk"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    boxShadow: {
+                        'retro-br': '4px 4px 0px 0px var(--color-secondary)',
+                        'retro-tl': '-4px -4px 0px 0px var(--color-primary)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-retro-bg text-retro-text font-sans transition-colors duration-500 overflow-x-hidden relative">
+
+
+
+    <!-- Spline 3D Interactive Background -->
+    <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
+        class="fixed inset-0 w-full h-full z-[-1] pointer-events-auto opacity-70"></spline-viewer>
+
+    <!-- Navbar -->
+    <header
+        class="fixed top-0 left-0 right-0 z-40 bg-retro-bg/90 backdrop-blur-md border-b-2 border-retro-secondary/20 p-4 flex justify-between items-center transition-colors duration-500">
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex gap-6 items-center">
+            <a href="#hero"
+                class="text-retro-primary font-bold hover:text-retro-accent transition-colors border-b-2 border-transparent hover:border-retro-accent pb-1">Home</a>
+            <a href="#experiences"
+                class="text-retro-primary font-bold hover:text-retro-accent transition-colors border-b-2 border-transparent hover:border-retro-accent pb-1">Experiences</a>
+            <a href="#education"
+                class="text-retro-primary font-bold hover:text-retro-accent transition-colors border-b-2 border-transparent hover:border-retro-accent pb-1">Education</a>
+            <a href="#skills"
+                class="text-retro-primary font-bold hover:text-retro-accent transition-colors border-b-2 border-transparent hover:border-retro-accent pb-1">Skills</a>
+            <a href="#hobbies"
+                class="text-retro-primary font-bold hover:text-retro-accent transition-colors border-b-2 border-transparent hover:border-retro-accent pb-1">Hobbies</a>
+            <a href="#contact"
+                class="text-retro-primary font-bold hover:text-retro-accent transition-colors border-b-2 border-transparent hover:border-retro-accent pb-1">Contact</a>
+        </nav>
+
+        <!-- Mobile Dropdown Logo (Visible only on small screens) -->
+        <div class="md:hidden font-serif text-2xl font-bold tracking-widest text-retro-primary">
+            PORTFOLIO
+        </div>
+        <div class="relative">
+            <button id="themeDropdownBtn"
+                class="flex items-center gap-2 px-4 py-2 bg-retro-bg border-2 border-retro-secondary rounded font-bold text-retro-secondary hover:bg-retro-secondary hover:text-retro-bg transition-colors shadow-retro-br">
+                <i class="fa-solid fa-palette"></i> Theme
+            </button>
+            <div id="themeDropdownMenu"
+                class="absolute right-0 mt-2 w-48 bg-retro-bg border-2 border-retro-secondary rounded shadow-retro-br hidden flex-col z-50 overflow-hidden">
+                <button
+                    class="theme-btn px-4 py-3 text-left hover:bg-retro-primary hover:text-retro-bg font-bold transition-colors border-b-2 border-retro-secondary/20 flex gap-3 items-center"
+                    data-theme="default">
+                    <span class="w-4 h-4 rounded-full bg-[#fca5a5] border border-retro-text shrink-0"></span> Retro
+                    Revival
+                </button>
+                <button
+                    class="theme-btn px-4 py-3 text-left hover:bg-retro-secondary hover:text-retro-bg font-bold transition-colors border-b-2 border-retro-secondary/20 flex gap-3 items-center"
+                    data-theme="dark">
+                    <span class="w-4 h-4 rounded-full bg-[#1e1b4b] border border-retro-text shrink-0"></span> Dark Retro
+                </button>
+                <button
+                    class="theme-btn px-4 py-3 text-left hover:bg-retro-accent hover:text-retro-secondary font-bold transition-colors flex gap-3 items-center"
+                    data-theme="mint">
+                    <span class="w-4 h-4 rounded-full bg-[#6ee7b7] border border-retro-text shrink-0"></span> Minty
+                    Retro
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto space-y-32 pb-32">
+
+        <!-- Hero Section -->
+        <section id="hero"
+            class="min-h-[80vh] flex flex-col md:flex-row items-center justify-between gap-12 relative p-6 mt-10">
+
+            <!-- Left Side / Text Content -->
+            <div class="z-10 w-full md:w-1/2">
+                <h1 class="text-6xl md:text-8xl font-serif font-bold mb-6 text-retro-text relative">
+                    Hello, I'm <span
+                        class="text-retro-secondary relative inline-block after:absolute after:bottom-1 after:left-0 after:right-0 after:h-4 after:bg-retro-primary/50 after:-z-10 z-10">Saji
+                        Ganguly</span>
+                </h1>
+
+                <!-- Typing Effect Bio Area -->
+                <p id="hero-bio" class="text-xl md:text-2xl text-retro-primary mb-8 max-w-2xl min-h-[150px]">
+                    <!-- JS types dynamically here -->
+                </p>
+                <a href="#contact"
+                    class="material-btn inline-block px-8 py-4 bg-retro-secondary text-retro-bg font-bold rounded shadow-md hover:shadow-xl hover:-translate-y-1 transition-all text-lg">
+                    Get In Touch <i class="fa-solid fa-arrow-right ml-2 animate-bounce-x"></i>
+                </a>
+            </div>
+
+            <!-- Right Side / Rive Interactive Component -->
+            <div class="z-10 w-full md:w-1/2 h-[400px] md:h-[500px] relative flex justify-center items-center">
+                <!-- User replaces this with their own .riv animation -->
+                <canvas id="rive-hero-canvas" class="w-full h-full object-contain"></canvas>
+            </div>
+
+        </section>
+
+        <!-- Experiences Section -->
+        <section id="experiences" class="min-h-screen py-20 px-6 max-w-5xl mx-auto">
+            <h2
+                class="text-4xl font-bold font-serif mb-12 text-retro-text border-b-4 border-retro-primary pb-2 inline-block">
+                Experiences</h2>
+            <div
+                class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+
+                <!-- Experience 1 -->
+                <div
+                    class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div
+                        class="flex items-center justify-center w-10 h-10 rounded-full border border-retro-bg bg-retro-secondary text-retro-bg shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div
+                        class="material-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-lg bg-retro-bg/80 backdrop-blur border-2 border-retro-secondary/20 shadow-md hover:shadow-xl transition-shadow">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                            <h3 class="font-bold text-retro-secondary text-xl">Data Analyst</h3>
+                            <time class="text-sm font-medium text-retro-primary">11/2024 - 05/2025</time>
+                        </div>
+                        <h4 class="font-bold text-retro-text mb-4">Enigma Data</h4>
+                        <ul class="list-disc list-inside text-retro-text space-y-2 opacity-90 text-sm md:text-base">
+                            <li>Built Power BI dashboards, optimized SQL queries, and automated web scraping using
+                                Python.</li>
+                            <li>Set up Azure Blob Storage and implemented pipeline error handling.</li>
+                            <li>Delivered custom data solutions with cross-functional teams.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div
+                    class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div
+                        class="flex items-center justify-center w-10 h-10 rounded-full border border-retro-bg bg-retro-primary text-retro-text shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div
+                        class="material-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-lg bg-retro-bg/80 backdrop-blur border-2 border-retro-secondary/20 shadow-md hover:shadow-xl transition-shadow">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                            <h3 class="font-bold text-retro-secondary text-xl">Jr. Software Engineer</h3>
+                            <time class="text-sm font-medium text-retro-primary">06/2023 - 08/2024</time>
+                        </div>
+                        <h4 class="font-bold text-retro-text mb-4">Entiovi Technologies</h4>
+                        <ul class="list-disc list-inside text-retro-text space-y-2 opacity-90 text-sm md:text-base">
+                            <li>Built full-stack MERN apps with features like JWT/OAuth auth, product management, and
+                                payments.</li>
+                            <li>Developed RESTful APIs with MySQL/MongoDB; enhanced performance and UX via code reviews.
+                            </li>
+                            <li>Contributed HTML/CSS for Cleared Talent hiring platform.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education"
+            class="min-h-screen py-20 px-6 max-w-5xl mx-auto bg-retro-secondary/5 rounded-3xl my-10 relative overflow-hidden material-card shadow-sm hover:shadow-md transition-shadow">
+            <h2
+                class="text-4xl font-bold font-serif mb-12 text-retro-text border-b-4 border-retro-primary pb-2 inline-block relative z-10">
+                Education & Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                <!-- Scaler Education Update -->
+                <div
+                    class="material-card p-6 rounded-lg bg-retro-bg border-l-8 border-blue-500 shadow-md hover:shadow-xl transition-shadow col-span-1 md:col-span-2">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-blue-600 text-xl">DSML (Data Science & Machine Learning) Program</h3>
+                        <span
+                            class="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-bold rounded-full whitespace-nowrap">IN
+                            PROGRESS </span>
+                    </div>
+                    <h4 class="font-bold text-retro-text mb-4">Scaler Academy</h4>
+                    <ul class="list-disc list-inside text-retro-text space-y-2 opacity-90">
+                        <li>Focused on advanced topics in data science, machine learning, and deep learning.</li>
+                        <li>Curriculum includes practical projects and real-world case studies.</li>
+                    </ul>
+                </div>
+
+                <div
+                    class="material-card p-6 rounded-lg bg-retro-bg border-2 border-retro-secondary/20 shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-retro-secondary text-xl mb-2">Bachelor of Technology (B.Tech)</h3>
+                    <h4 class="font-bold text-retro-text mb-2">Institute of Engineering and Management</h4>
+                    <time class="block text-sm font-medium text-retro-primary mb-4">July 2018 - Jun 2022</time>
+                    <p class="opacity-90 font-bold">GPA: 8.12</p>
+                </div>
+                <div
+                    class="material-card p-6 rounded-lg bg-retro-bg border-2 border-retro-secondary/20 shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-retro-secondary text-xl mb-4">Certifications</h3>
+                    <ul class="list-disc list-inside text-retro-text space-y-2 opacity-90">
+                        <li>Python for Data Science - Learnbay</li>
+                        <li>HTML, CSS, and React - Udemy</li>
+                        <li>Microsoft Power BI Desktop</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="min-h-screen py-20 px-6 max-w-5xl mx-auto">
+            <h2
+                class="text-4xl font-bold font-serif mb-12 text-retro-text border-b-4 border-retro-primary pb-2 inline-block">
+                Skills</h2>
+            <div class="flex flex-wrap gap-4">
+                <!-- Data Skills -->
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-secondary text-retro-secondary font-bold shadow-md hover:shadow-lg hover:bg-retro-secondary hover:text-retro-bg transition-all cursor-default">Python</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-secondary text-retro-secondary font-bold shadow-md hover:shadow-lg hover:bg-retro-secondary hover:text-retro-bg transition-all cursor-default">SQL</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-secondary text-retro-secondary font-bold shadow-md hover:shadow-lg hover:bg-retro-secondary hover:text-retro-bg transition-all cursor-default">Power
+                    BI & DAX</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-secondary text-retro-secondary font-bold shadow-md hover:shadow-lg hover:bg-retro-secondary hover:text-retro-bg transition-all cursor-default">Data
+                    Modelling</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-secondary text-retro-secondary font-bold shadow-md hover:shadow-lg hover:bg-retro-secondary hover:text-retro-bg transition-all cursor-default">Web
+                    Scraping</span>
+
+                <!-- Dev Skills -->
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-primary text-retro-primary font-bold shadow-md hover:shadow-lg hover:bg-retro-primary hover:text-retro-bg transition-all cursor-default">JavaScript</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-primary text-retro-primary font-bold shadow-md hover:shadow-lg hover:bg-retro-primary hover:text-retro-bg transition-all cursor-default">React.js</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-primary text-retro-primary font-bold shadow-md hover:shadow-lg hover:bg-retro-primary hover:text-retro-bg transition-all cursor-default">Node.js
+                    & Express</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-primary text-retro-primary font-bold shadow-md hover:shadow-lg hover:bg-retro-primary hover:text-retro-bg transition-all cursor-default">MongoDB
+                    & MySQL</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-primary text-retro-primary font-bold shadow-md hover:shadow-lg hover:bg-retro-primary hover:text-retro-bg transition-all cursor-default">HTML
+                    & CSS</span>
+
+                <!-- Tools -->
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-accent text-retro-accent font-bold shadow-md hover:shadow-lg hover:bg-retro-accent hover:text-retro-bg transition-all cursor-default">Git
+                    & Jira</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-accent text-retro-accent font-bold shadow-md hover:shadow-lg hover:bg-retro-accent hover:text-retro-bg transition-all cursor-default">Firebase</span>
+                <span
+                    class="px-6 py-3 rounded-full bg-retro-bg border-2 border-retro-accent text-retro-accent font-bold shadow-md hover:shadow-lg hover:bg-retro-accent hover:text-retro-bg transition-all cursor-default">Azure
+                    Blob Storage</span>
+            </div>
+        </section>
+
+        <!-- Hobbies Section -->
+        <section id="hobbies"
+            class="min-h-screen py-20 px-6 max-w-5xl mx-auto bg-retro-primary/10 rounded-3xl my-10 relative overflow-hidden material-card shadow-sm hover:shadow-md transition-shadow">
+            <h2
+                class="text-4xl font-bold font-serif mb-12 text-retro-text border-b-4 border-retro-secondary pb-2 inline-block relative z-10">
+                When I'm Not Coding</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                <div
+                    class="material-card bg-retro-bg border-2 border-retro-secondary/20 p-6 rounded-lg text-center shadow-md hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col items-center justify-center min-h-[160px]">
+                    <i class="fa-solid fa-palette text-4xl text-retro-secondary mb-4 block"></i>
+                    <h3 class="font-bold text-xl mb-2">Painting</h3>
+                </div>
+                <div
+                    class="material-card bg-retro-bg border-2 border-retro-secondary/20 p-6 rounded-lg text-center shadow-md hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col items-center justify-center min-h-[160px]">
+                    <i class="fa-solid fa-video text-4xl text-retro-accent mb-4 block"></i>
+                    <h3 class="font-bold text-xl mb-2">Video Editing</h3>
+                </div>
+                <div
+                    class="material-card bg-retro-bg border-2 border-retro-secondary/20 p-6 rounded-lg text-center shadow-md hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col items-center justify-center min-h-[160px]">
+                    <i class="fa-brands fa-youtube text-4xl text-red-500 mb-4 block"></i>
+                    <h3 class="font-bold text-xl mb-2">Social Media</h3>
+                    <p class="opacity-90 text-sm">YouTube & IG</p>
+                </div>
+                <div
+                    class="material-card bg-retro-bg border-2 border-retro-secondary/20 p-6 rounded-lg text-center shadow-md hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col items-center justify-center min-h-[160px]">
+                    <i class="fa-solid fa-tv text-4xl text-retro-primary mb-4 block"></i>
+                    <h3 class="font-bold text-xl mb-2">Bingeing</h3>
+                    <p class="opacity-90 text-sm">Netflix</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+            <h2 class="text-5xl font-bold font-serif mb-6 text-retro-text">Let's Connect</h2>
+            <p class="text-xl text-retro-primary mb-10 max-w-xl">
+                Ready to collaborate on data-driven solutions or pixel-perfect web experiences? I'd love to hear from
+                you.
+                <br><br><b>Located in Kolkata, India.</b>
+            </p>
+            <div
+                class="material-card bg-retro-secondary/5 p-8 border-2 border-retro-secondary/20 rounded-lg shadow-md max-w-md w-full mb-8">
+                <div class="flex items-center justify-center gap-4 mb-4 text-lg">
+                    <i class="fa-solid fa-envelope text-retro-secondary text-2xl"></i>
+                    <a href="mailto:ganguly2904saji@gmail.com"
+                        class="hover:text-retro-primary font-bold transition-colors break-all">ganguly2904saji@gmail.com</a>
+                </div>
+                <div class="flex items-center justify-center gap-4 text-lg">
+                    <i class="fa-solid fa-phone text-retro-secondary text-2xl"></i>
+                    <a href="tel:+916290919566" class="hover:text-retro-primary font-bold transition-colors">+91
+                        6290919566</a>
+                </div>
+            </div>
+            <a href="mailto:ganguly2904saji@gmail.com"
+                class="material-btn inline-block px-10 py-5 bg-retro-text text-retro-bg font-bold rounded text-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all">
+                Send a Message <i class="fa-regular fa-paper-plane ml-2"></i>
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 text-retro-secondary border-t-2 border-retro-secondary/20 font-medium">
+        <p>&copy; 2026 Saji Ganguly. Crafted with <i class="fa-solid fa-heart text-retro-primary"></i></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

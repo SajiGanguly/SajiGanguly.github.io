@@ -1,0 +1,122 @@
+/* Base retro revival styling variables */
+
+:root {
+    /* Default - Retro Revival */
+    --color-bg: #fff0f5;
+    /* Very Light Pink/Cream */
+    --color-text: #1a051a;
+    /* Darkest purple for text */
+    --color-primary: #ffb6c1;
+    /* Pastel Pink */
+    --color-secondary: #4a0e4e;
+    /* Deep Purple */
+    --color-accent: #9fe2bf;
+    /* Seafoam Green */
+}
+
+html[data-theme='dark'] {
+    /* Dark Retro theme variables */
+    --color-bg: #1a051a;
+    /* Darkest purple background */
+    --color-text: #fdf4ff;
+    /* Light text */
+    --color-primary: #4a0e4e;
+    /* Deep Purple */
+    --color-secondary: #9fe2bf;
+    /* Seafoam Green */
+    --color-accent: #ffb6c1;
+    /* Pastel Pink */
+}
+
+html[data-theme='mint'] {
+    /* Minty Retro theme variables */
+    --color-bg: #eafff5;
+    /* Minty background */
+    --color-text: #301934;
+    /* Deep Purple Text */
+    --color-primary: #9fe2bf;
+    /* Seafoam Green */
+    --color-secondary: #ffb6c1;
+    /* Pastel Pink */
+    --color-accent: #4a0e4e;
+    /* Deep Purple */
+}
+
+/* Custom Highlights */
+.highlight-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: -2%;
+    width: 104%;
+    height: 35%;
+    background-color: var(--color-accent);
+    z-index: -1;
+    transform: rotate(-1deg);
+    opacity: 0.8;
+    transition: background-color 0.5s ease;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar for aesthetic */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-secondary);
+    border: 3px solid var(--color-bg);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+/* --- Hello Kitty Falling Animation --- */
+.trinket {
+    position: absolute;
+    top: -100px;
+    opacity: 0.8;
+    animation: fallDown linear infinite, sway ease-in-out infinite alternate;
+}
+
+
+/* Animations */
+@keyframes fallDown {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        top: 110vh;
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+    0% {
+        transform: translateX(-30px) rotate(-15deg);
+    }
+
+    100% {
+        transform: translateX(30px) rotate(15deg);
+    }
+}
