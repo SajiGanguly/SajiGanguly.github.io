@@ -8,27 +8,18 @@ import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { GlowingStarsBackgroundCard } from "@/components/ui/glowing-stars-background-card";
 import { TextRevealCard } from "@/components/ui/text-reveal-card";
-import { MoveRight, Mail, Phone, Palette, Video, Youtube, Tv, HomeIcon, Briefcase, GraduationCap, Code, Heart, Contact, Sun, Moon, Leaf } from "lucide-react";
+import { LampContainer } from "@/components/ui/lamp";
+import { MoveRight, Mail, Phone, Palette, Video, Youtube, Tv, HomeIcon, Briefcase, GraduationCap, Code, Heart, Contact, Sun, Moon, Leaf, Download, BookOpen } from "lucide-react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { FloatingTechIcons } from "@/components/ui/floating-tech-icons";
-import { DottedGlowBackground } from "@/components/ui/dotted-glow-background";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-import { FaLaptopCode, FaGithub, FaLinkedin, FaUser } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
+import { FaLaptopCode, FaGithub, FaLinkedin, FaUser, FaYoutube, FaInstagram, FaPalette } from "react-icons/fa";
+import { SiLeetcode, SiNetflix, SiAdobepremierepro } from "react-icons/si";
+import { useTheme } from "@/contexts/theme-context";
 
 export default function Home() {
-  const [theme, setTheme] = useState("default");
-
-  useEffect(() => {
-    // Basic theme switcher logic for HTML attribute
-    const htmlElement = document.documentElement;
-    if (theme === "default") {
-      htmlElement.removeAttribute("data-theme");
-    } else {
-      htmlElement.setAttribute("data-theme", theme);
-    }
-  }, [theme]);
+  const { theme, setTheme } = useTheme();
 
   const navItems = [
     { title: "Home", icon: <HomeIcon className="h-full w-full text-retro-text" />, href: "#hero" },
@@ -38,6 +29,7 @@ export default function Home() {
     { title: "Skills", icon: <Code className="h-full w-full text-retro-text" />, href: "#skills" },
     { title: "Hobbies", icon: <Heart className="h-full w-full text-retro-text" />, href: "#hobbies" },
     { title: "Contact", icon: <Contact className="h-full w-full text-retro-text" />, href: "#contact" },
+    { title: "Blog", icon: <BookOpen className="h-full w-full text-retro-text" />, href: "/blog" },
   ];
 
   const experienceItems = [
@@ -135,7 +127,7 @@ export default function Home() {
           <FloatingDock items={navItems} />
         </div>
         <div className="absolute right-4 top-2 md:top-0 pointer-events-auto flex items-center gap-3">
-          <a href="#contact" className="p-3 md:p-[14px] bg-retro-bg border-2 border-retro-primary rounded-2xl text-retro-primary hover:text-white hover:bg-retro-primary hover:-translate-y-1 transition-all shadow-xl hover:shadow-2xl flex items-center justify-center">
+          <a href="mailto:ganguly2904saji@gmail.com" className="p-3 md:p-[14px] bg-retro-bg border-2 border-retro-primary rounded-2xl text-retro-primary hover:text-white hover:bg-retro-primary hover:-translate-y-1 transition-all shadow-xl hover:shadow-2xl flex items-center justify-center">
             <Mail className="w-5 h-5" />
           </a>
           <button
@@ -170,12 +162,12 @@ export default function Home() {
               Data Analyst & Full-Stack Developer
             </h2>
 
-            <div className="relative -ml-1 text-left w-full lg:w-auto overflow-hidden py-2">
+            <div className="relative -ml-1 text-center lg:text-left w-full lg:w-auto overflow-hidden py-2">
               <motion.h1
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                className="text-6xl sm:text-7xl lg:text-8xl font-black font-outfit text-transparent bg-clip-text bg-gradient-to-r from-retro-primary via-purple-400 to-retro-accent tracking-tighter leading-tight !text-left"
+                className="text-6xl sm:text-7xl lg:text-8xl font-black font-outfit text-transparent bg-clip-text bg-gradient-to-r from-retro-primary via-purple-400 to-retro-accent tracking-tighter leading-tight text-center lg:text-left"
               >
                 SAJI GANGULY
               </motion.h1>
@@ -195,6 +187,25 @@ export default function Home() {
                 </span>
               ))}
             </div>
+
+            {/* Resume Download CTA */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="mt-8 pt-4 flex justify-center lg:justify-start w-full"
+            >
+              <a
+                href="/resume.pdf"
+                download="Saji_Ganguly_Resume.pdf"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-retro-primary via-purple-500 to-retro-accent rounded-full text-white font-black tracking-wide text-lg overflow-hidden shadow-[0_0_20px_rgba(159,226,191,0.5)] hover:shadow-[0_0_35px_rgba(159,226,191,0.8)] hover:-translate-y-1 transition-all duration-300"
+              >
+                {/* Shine effect overlay */}
+                <div className="absolute inset-0 -translate-x-full skew-x-12 bg-white/30 group-hover:animate-[shimmer_1s_forwards]"></div>
+                <span>DOWNLOAD RESUME</span>
+                <Download className="w-5 h-5 group-hover:-translate-y-1 group-hover:scale-110 transition-all duration-300" />
+              </a>
+            </motion.div>
 
 
           </div>
@@ -306,20 +317,33 @@ export default function Home() {
           <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block mb-12">When I'm Not Coding</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <GlowingStarsBackgroundCard className="min-h-[220px] flex flex-col items-center justify-center text-center">
-              <Palette className="w-12 h-12 text-retro-secondary mb-4 drop-shadow-md" />
+              <FaPalette className="w-12 h-12 mb-4 drop-shadow-xl" style={{ color: "#FFaa00" }} />
               <h3 className="font-bold text-xl text-retro-text">Painting</h3>
             </GlowingStarsBackgroundCard>
             <GlowingStarsBackgroundCard className="min-h-[220px] flex flex-col items-center justify-center text-center">
-              <Video className="w-12 h-12 text-retro-accent mb-4 drop-shadow-md" />
+              <div
+                className="w-12 h-12 mb-4 drop-shadow-xl flex items-center justify-center rounded-lg"
+                style={{ backgroundColor: "#00005C" }}
+              >
+                <SiAdobepremierepro className="w-8 h-8" style={{ color: "#99A5FF" }} />
+              </div>
               <h3 className="font-bold text-xl text-retro-text">Video Editing</h3>
             </GlowingStarsBackgroundCard>
             <GlowingStarsBackgroundCard className="min-h-[220px] flex flex-col items-center justify-center text-center">
-              <Youtube className="w-12 h-12 text-retro-accent mb-4 drop-shadow-md" />
+              <div className="flex gap-4 mb-4 drop-shadow-xl">
+                <FaYoutube className="w-12 h-12" style={{ color: "#FF0000" }} />
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{ background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)" }}
+                >
+                  <FaInstagram className="w-8 h-8 text-white" />
+                </div>
+              </div>
               <h3 className="font-bold text-xl text-retro-text">Social Media</h3>
               <p className="opacity-90 text-sm mt-1 text-retro-text">YouTube & IG</p>
             </GlowingStarsBackgroundCard>
             <GlowingStarsBackgroundCard className="min-h-[220px] flex flex-col items-center justify-center text-center">
-              <Tv className="w-12 h-12 text-retro-primary mb-4 drop-shadow-md" />
+              <SiNetflix className="w-12 h-12 mb-4 drop-shadow-xl" style={{ color: "#E50914" }} />
               <h3 className="font-bold text-xl text-retro-text">Bingeing</h3>
               <p className="opacity-90 text-sm mt-1 text-retro-text">Netflix</p>
             </GlowingStarsBackgroundCard>
@@ -327,51 +351,77 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center py-24">
-          <CardContainer className="inter-var w-full">
-            <CardBody className="bg-retro-bg relative group/card border-black/[0.1] w-[90%] sm:w-[45rem] min-h-[400px] h-auto rounded-3xl p-0 border border-retro-secondary/50 overflow-hidden shadow-[0_0_30px_-5px_var(--color-secondary)]">
-              <DottedGlowBackground
-                className="pointer-events-none absolute inset-0 z-0 rounded-3xl"
-                opacity={1}
-                gap={15}
-                radius={2}
-                colorLightVar="--color-primary"
-                glowColorLightVar="--color-secondary"
-                colorDarkVar="--color-primary"
-                glowColorDarkVar="--color-secondary"
-                backgroundOpacity={0.1}
-                speedMin={0.3}
-                speedMax={1.6}
-                speedScale={1}
-              />
-              <div className="relative z-10 w-full h-full flex flex-col items-center justify-center py-10">
-                <CardItem translateZ="50" className="relative z-20">
-                  <h2 className="text-3xl sm:text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block mb-10 text-center drop-shadow-md bg-retro-bg/80 px-6 py-2 rounded-xl backdrop-blur-sm">Contact Me</h2>
-                </CardItem>
-                <CardItem translateZ="100" className="relative z-20 w-full flex flex-col items-center mt-2 px-4">
-                  <div className="bg-retro-bg/90 backdrop-blur-md p-6 sm:p-8 rounded-2xl border-4 border-retro-primary shadow-xl mb-6">
-                    <TextGenerateEffect
-                      words="ganguly2904saji@gmail.com | +91 6290919566"
-                      className="text-lg sm:text-2xl md:text-3xl text-retro-text !font-mono text-center"
-                    />
+        <section id="contact" className="relative w-full z-10">
+          <LampContainer>
+            <motion.div
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="flex flex-col items-center justify-center text-center w-full max-w-5xl z-50 pt-12 lg:pt-24 px-6 overflow-hidden"
+            >
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-outfit text-retro-text mb-6">
+                Let's Connect<span className="text-retro-primary">.</span>
+              </h2>
+              <p className="text-retro-text/60 font-mono text-base md:text-lg max-w-md mx-auto mb-16">
+                Have a question ? <br />Drop me a message to get started.
+              </p>
+
+              {/* Contact Cards */}
+              <div className="w-full flex flex-col md:flex-row gap-8 justify-center items-center">
+                {/* Email Card */}
+                <a href="mailto:ganguly2904saji@gmail.com" className="group w-full md:w-1/2 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 p-6 sm:p-8 bg-black/20 border border-retro-primary/30 hover:border-retro-primary hover:bg-retro-primary/10 rounded-2xl transition-all hover:-translate-y-1 shadow-2xl backdrop-blur-xl">
+                  <div className="w-14 h-14 bg-retro-primary/20 rounded-full flex shrink-0 items-center justify-center group-hover:bg-retro-primary/40 transition-colors">
+                    <Mail className="w-6 h-6 text-retro-primary" />
                   </div>
-                  <div className="flex gap-6 mt-2" suppressHydrationWarning>
-                    <a href="https://github.com/SajiGanguly" target="_blank" rel="noopener noreferrer" className="p-3 bg-retro-bg border-2 border-retro-primary rounded-full text-retro-text hover:text-white hover:bg-black hover:border-black hover:-translate-y-1 transition-all shadow-md">
-                      <FaGithub className="w-6 h-6" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/29saji-ganguly-719613169" target="_blank" rel="noopener noreferrer" className="p-3 bg-retro-bg border-2 border-retro-primary rounded-full text-retro-text hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:-translate-y-1 transition-all shadow-md">
-                      <FaLinkedin className="w-6 h-6" />
-                    </a>
-                    <a href="https://leetcode.com/u/saji2904/" target="_blank" rel="noopener noreferrer" className="p-3 bg-retro-bg border-2 border-retro-primary rounded-full text-retro-text hover:text-[#FFA116] hover:bg-black hover:border-black hover:-translate-y-1 transition-all shadow-md">
-                      <SiLeetcode className="w-6 h-6" />
-                    </a>
+                  <div className="flex-1 overflow-hidden">
+                    <p className="text-xs text-retro-text/50 font-mono uppercase tracking-widest mb-2">Email Me At</p>
+                    <p className="text-lg md:text-xl font-bold font-outfit text-retro-text group-hover:text-retro-primary transition-colors truncate">ganguly2904saji@gmail.com</p>
                   </div>
-                </CardItem>
+                </a>
+
+                {/* Phone Card */}
+                <a href="tel:+916290919566" className="group w-full md:w-1/2 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 p-6 sm:p-8 bg-black/20 border border-retro-accent/30 hover:border-retro-accent hover:bg-retro-accent/10 rounded-2xl transition-all hover:-translate-y-1 shadow-2xl backdrop-blur-xl">
+                  <div className="w-14 h-14 bg-retro-accent/20 rounded-full flex shrink-0 items-center justify-center group-hover:bg-retro-accent/40 transition-colors">
+                    <Phone className="w-6 h-6 text-retro-accent" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-retro-text/50 font-mono uppercase tracking-widest mb-2">Call Me At</p>
+                    <p className="text-lg md:text-xl font-bold font-outfit text-retro-text group-hover:text-retro-accent transition-colors">+91 6290919566</p>
+                  </div>
+                </a>
               </div>
-            </CardBody>
-          </CardContainer>
+
+              {/* Social Links */}
+              <div className="w-full flex flex-col items-center mt-12 border-t border-retro-secondary/30 pt-10">
+                <p className="text-xs font-mono text-retro-text/50 mb-6 uppercase tracking-widest">Also Find Me On</p>
+                <div className="flex gap-6" suppressHydrationWarning>
+                  <a href="https://github.com/SajiGanguly" target="_blank" rel="noopener noreferrer" className="p-4 bg-black/20 border border-retro-text/10 rounded-full text-retro-text hover:text-white hover:bg-black hover:border-black hover:-translate-y-2 transition-all shadow-xl backdrop-blur-md">
+                    <FaGithub className="w-6 h-6" />
+                  </a>
+                  <a href="https://www.linkedin.com/in/29saji-ganguly-719613169" target="_blank" rel="noopener noreferrer" className="p-4 bg-black/20 border border-retro-text/10 rounded-full text-retro-text hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:-translate-y-2 transition-all shadow-xl backdrop-blur-md">
+                    <FaLinkedin className="w-6 h-6" />
+                  </a>
+                  <a href="https://leetcode.com/u/saji2904/" target="_blank" rel="noopener noreferrer" className="p-4 bg-black/20 border border-retro-text/10 rounded-full text-retro-text hover:text-[#FFA116] hover:bg-black hover:border-black hover:-translate-y-2 transition-all shadow-xl backdrop-blur-md">
+                    <SiLeetcode className="w-6 h-6" />
+                  </a>
+                </div>
+              </div>
+
+            </motion.div>
+          </LampContainer>
         </section>
       </div>
+
+      {/* Simple Footer */}
+      <footer className="w-full py-8 mt-12 border-t border-retro-secondary/20 bg-retro-bg flex items-center justify-center relative z-10">
+        <p className="text-retro-text/70 font-mono text-sm sm:text-base text-center px-4">
+          built by <span className="text-retro-primary font-bold">Saji Ganguly</span> <span className="mx-2 text-retro-accent">-</span> Creative Technologist
+        </p>
+      </footer>
 
     </main>
   );

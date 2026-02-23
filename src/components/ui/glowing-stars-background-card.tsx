@@ -40,7 +40,7 @@ export const GlowingStarsBackgroundCard = ({
 
             <GlowingStars />
 
-            <div className="relative z-50 h-full">{children}</div>
+            <div className="relative z-50 h-full w-full flex flex-col items-center justify-center text-center">{children}</div>
         </div>
     );
 };
