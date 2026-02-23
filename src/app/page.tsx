@@ -152,10 +152,6 @@ export default function Home() {
           {/* Left Panel: Text & CTA */}
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
 
-            <div className="flex items-center gap-2 text-retro-accent font-mono font-bold tracking-wider text-sm sm:text-base bg-retro-accent/10 px-4 py-1.5 rounded-full border border-retro-accent/20 shadow-sm mt-4">
-              <span className="text-retro-text opacity-50">01.</span>
-              <span>console.log("Hello World");</span>
-            </div>
 
             <h2 className="text-lg md:text-xl font-bold tracking-widest text-retro-text opacity-70 uppercase mt-4">
               Data Analyst & Full-Stack Developer

@@ -12,8 +12,8 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    // Start with 'default', but we'll override it immediately if we find a saved theme
-    const [theme, setThemeState] = useState<Theme>("default");
+    // Start with 'dark', but we'll override it immediately if we find a saved theme
+    const [theme, setThemeState] = useState<Theme>("dark");
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {

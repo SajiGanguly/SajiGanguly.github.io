@@ -65,7 +65,6 @@ html[data-theme='mint'] {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
 }
 
 body {
