@@ -29,7 +29,6 @@ export default function Home() {
     { title: "Skills", icon: <Code className="h-full w-full text-retro-text" />, href: "#skills" },
     { title: "Hobbies", icon: <Heart className="h-full w-full text-retro-text" />, href: "#hobbies" },
     { title: "Contact", icon: <Contact className="h-full w-full text-retro-text" />, href: "#contact" },
-    { title: "Blog", icon: <BookOpen className="h-full w-full text-retro-text" />, href: "/blog" },
   ];
 
   const experienceItems = [
