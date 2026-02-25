@@ -9,7 +9,7 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { GlowingStarsBackgroundCard } from "@/components/ui/glowing-stars-background-card";
 import { TextRevealCard } from "@/components/ui/text-reveal-card";
 import { LampContainer } from "@/components/ui/lamp";
-import { MoveRight, Mail, Phone, Palette, Video, Youtube, Tv, HomeIcon, Briefcase, GraduationCap, Code, Heart, Contact, Sun, Moon, Leaf, Download, BookOpen } from "lucide-react";
+import { MoveRight, Mail, Phone, Palette, Video, Youtube, Tv, HomeIcon, Briefcase, GraduationCap, Code, Heart, Contact, Sun, Moon, Leaf, Download, BookOpen, FolderGit2 } from "lucide-react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { FloatingTechIcons } from "@/components/ui/floating-tech-icons";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
@@ -17,6 +17,7 @@ import { TracingBeam } from "@/components/ui/tracing-beam";
 import { FaLaptopCode, FaGithub, FaLinkedin, FaUser, FaYoutube, FaInstagram, FaPalette } from "react-icons/fa";
 import { SiLeetcode, SiNetflix, SiAdobepremierepro } from "react-icons/si";
 import { useTheme } from "@/contexts/theme-context";
+import { FeaturedProjects } from "@/components/featured-projects";
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -24,6 +25,7 @@ export default function Home() {
   const navItems = [
     { title: "Home", icon: <HomeIcon className="h-full w-full text-retro-text" />, href: "#hero" },
     { title: "About", icon: <FaUser className="h-full w-full text-retro-text" />, href: "#about" },
+    { title: "Projects", icon: <FolderGit2 className="h-full w-full text-retro-text" />, href: "#projects" },
     { title: "Experiences", icon: <Briefcase className="h-full w-full text-retro-text" />, href: "#experiences" },
     { title: "Education", icon: <GraduationCap className="h-full w-full text-retro-text" />, href: "#education" },
     { title: "Skills", icon: <Code className="h-full w-full text-retro-text" />, href: "#skills" },
@@ -280,6 +282,12 @@ export default function Home() {
             </div>
           </TracingBeam>
         </section>
+
+        {/* Featured Projects Section */}
+        <section id="projects" className="relative w-full flex flex-col justify-center py-24">
+          <FeaturedProjects />
+        </section>
+
         {/* Experiences Section */}
         <section id="experiences" className="relative w-full min-h-[100dvh] flex flex-col justify-center py-24">
           <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block mb-4">Experiences</h2>
