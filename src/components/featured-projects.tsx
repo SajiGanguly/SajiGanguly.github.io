@@ -7,6 +7,12 @@ import { FaGithub } from "react-icons/fa";
 
 export function FeaturedProjects() {
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+    const [expandedTech, setExpandedTech] = useState<Record<string, boolean>>({});
+
+    const toggleTech = (id: string, e: React.MouseEvent) => {
+        e.preventDefault();
+        setExpandedTech(prev => ({ ...prev, [id]: !prev[id] }));
+    };
 
     return (
         <div className="w-full flex flex-col items-center justify-center pt-4 pb-12 overflow-hidden px-4 md:px-0">
@@ -27,24 +33,15 @@ export function FeaturedProjects() {
 
                         {/* Left Side: Title & Description */}
                         <div className="flex-1 max-w-2xl relative z-10 transition-transform duration-500 group-hover:translate-x-2">
-                            <div className="flex items-center gap-4 mb-2">
-                                <h3 className="text-3xl md:text-5xl font-black font-outfit text-retro-text group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-retro-primary group-hover:to-retro-accent transition-all duration-500">
-                                    {project.title}
-                                </h3>
-                                <span className={`px-3 py-1 text-[10px] md:text-xs font-bold font-mono rounded-full uppercase tracking-wider border whitespace-nowrap hidden sm:inline-block ${project.type === 'Work Experience'
-                                    ? 'bg-retro-accent/10 text-retro-accent border-retro-accent/30'
-                                    : 'bg-retro-secondary/10 text-retro-secondary border-retro-secondary/30'
-                                    }`}>
-                                    {project.type}
-                                </span>
-                            </div>
-                            {/* Mobile Badge Only */}
-                            <span className={`inline-block sm:hidden mb-3 px-3 py-1 text-[10px] font-bold font-mono rounded-full uppercase tracking-wider border ${project.type === 'Work Experience'
+                            <span className={`inline-block mb-3 px-3 py-1 text-[10px] md:text-xs font-bold font-mono rounded-full uppercase tracking-wider border whitespace-nowrap ${project.type === 'Work Experience'
                                 ? 'bg-retro-accent/10 text-retro-accent border-retro-accent/30'
                                 : 'bg-retro-secondary/10 text-retro-secondary border-retro-secondary/30'
                                 }`}>
                                 {project.type}
                             </span>
+                            <h3 className="text-3xl md:text-5xl font-black font-outfit text-retro-text group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-retro-primary group-hover:to-retro-accent transition-all duration-500 mb-2">
+                                {project.title}
+                            </h3>
                             <p className="text-retro-text/60 text-sm md:text-base leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                                 {project.description}
                             </p>
@@ -53,7 +50,7 @@ export function FeaturedProjects() {
                         {/* Right Side: Tech Stack & Links */}
                         <div className="flex flex-col items-start md:items-end gap-4 relative z-10 transition-transform duration-500 group-hover:-translate-x-2">
                             <div className="flex flex-wrap gap-2 justify-start md:justify-end">
-                                {project.techStack.slice(0, 3).map((tech) => (
+                                {project.techStack.slice(0, expandedTech[project.id] ? project.techStack.length : 3).map((tech) => (
                                     <span
                                         key={tech}
                                         className="px-3 py-1 bg-retro-text/10 border border-retro-text/10 rounded-full text-[10px] md:text-xs font-mono font-bold text-retro-text uppercase tracking-wider"
@@ -61,10 +58,21 @@ export function FeaturedProjects() {
                                         {tech}
                                     </span>
                                 ))}
-                                {project.techStack.length > 3 && (
-                                    <span className="px-3 py-1 bg-retro-text/10 border border-retro-text/10 rounded-full text-[10px] md:text-xs font-mono font-bold text-retro-text/50 uppercase tracking-wider">
+                                {project.techStack.length > 3 && !expandedTech[project.id] && (
+                                    <button
+                                        onClick={(e) => toggleTech(project.id, e)}
+                                        className="px-3 py-1 bg-retro-text/10 border border-retro-text/10 rounded-full text-[10px] md:text-xs font-mono font-bold text-retro-text/50 hover:text-retro-text hover:bg-retro-text/20 uppercase tracking-wider cursor-pointer transition-colors focus:outline-none"
+                                    >
                                         + {project.techStack.length - 3}
-                                    </span>
+                                    </button>
+                                )}
+                                {expandedTech[project.id] && project.techStack.length > 3 && (
+                                    <button
+                                        onClick={(e) => toggleTech(project.id, e)}
+                                        className="px-3 py-1 bg-retro-text/10 border border-retro-text/10 rounded-full text-[10px] md:text-xs font-mono font-bold text-retro-text/50 hover:text-retro-text hover:bg-retro-text/20 uppercase tracking-wider cursor-pointer transition-colors focus:outline-none"
+                                    >
+                                        - Less
+                                    </button>
                                 )}
                             </div>
 
@@ -90,13 +98,6 @@ export function FeaturedProjects() {
                             </div>
                         </div>
 
-                        {/* Floating Image Reveal (Hidden on Mobile, Shows on Hover) */}
-                        <div className={`hidden lg:flex pointer-events-none absolute right-[10%] top-1/2 -translate-y-1/2 w-[350px] h-[220px] rounded-2xl shadow-2xl opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-out z-20 ${project.imageFallback} flex items-center justify-center rotate-3 group-hover:rotate-0`}>
-                            <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent pointer-events-none mix-blend-overlay rounded-2xl"></div>
-                            <span className="text-4xl font-black text-white/50 uppercase tracking-widest text-center transform -rotate-12 group-hover:rotate-0 transition-transform duration-700">
-                                {project.title.split(' ')[0]}
-                            </span>
-                        </div>
 
                     </div>
                 ))}

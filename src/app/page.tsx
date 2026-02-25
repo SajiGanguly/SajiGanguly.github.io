@@ -266,7 +266,6 @@ export default function Home() {
             <div className="w-full antialiased pt-4 lg:pt-0">
               <h2 className="text-3xl md:text-5xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block drop-shadow-md mb-8">About Me</h2>
               <div className="bg-retro-bg/80 border-retro-secondary/50 border-2 rounded-xl p-6 md:p-8 shadow-lg backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-retro-primary mb-4 font-mono">&gt; init_developer()</h3>
                 <p className="text-lg text-retro-text mb-4 opacity-90 leading-relaxed">
                   I am an adaptable and detail-oriented professional transitioning fully into the data analytics space. With a foundational background in full-stack development, I have recently pivoted my focus toward my true passion: extracting meaningful stories from raw data.
                 </p>
