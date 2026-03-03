@@ -28,7 +28,7 @@ export const FloatingDock = ({
     );
 };
 
-const FloatingDockMobile = ({
+export const FloatingDockMobile = ({
     items,
     className,
 }: {
@@ -37,53 +37,72 @@ const FloatingDockMobile = ({
 }) => {
     const [open, setOpen] = useState(false);
     return (
-        <div className={cn("relative block md:hidden", className)}>
+        <div className={cn("relative block md:hidden z-50", className)}>
             <AnimatePresence>
                 {open && (
-                    <motion.div
-                        layoutId="nav"
-                        className="absolute top-full mb-2 inset-x-0 flex flex-col gap-2"
-                    >
-                        {items.map((item, idx) => (
-                            <motion.div
-                                key={item.title}
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{
-                                    opacity: 1,
-                                    y: 0,
-                                }}
-                                exit={{
-                                    opacity: 0,
-                                    y: -10,
-                                    transition: {
-                                        delay: idx * 0.05,
-                                    },
-                                }}
-                                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-                            >
-                                <Link
-                                    href={item.href}
+                    <div className="absolute inset-0 z-40 pointer-events-none">
+                        {items.map((item, idx) => {
+                            let radius = 100;
+                            let angle = -90;
+
+                            if (items.length === 8) {
+                                if (idx < 3) {
+                                    radius = 85;
+                                    angle = -90 - (90 * (idx / 2));
+                                } else {
+                                    radius = 160;
+                                    angle = -90 - (90 * ((idx - 3) / 4));
+                                }
+                            } else {
+                                radius = 120;
+                                angle = -90 - (90 * (idx / (items.length - 1 || 1)));
+                            }
+
+                            const radians = angle * (Math.PI / 180);
+                            const x = Math.cos(radians) * radius;
+                            const y = Math.sin(radians) * radius;
+
+                            return (
+                                <motion.div
                                     key={item.title}
-                                    className="h-10 w-10 rounded-full bg-retro-secondary flex items-center justify-center"
+                                    initial={{ opacity: 0, x: 0, y: 0, scale: 0.5 }}
+                                    animate={{ opacity: 1, x, y, scale: 1 }}
+                                    exit={{ opacity: 0, x: 0, y: 0, scale: 0.5, transition: { delay: (items.length - 1 - idx) * 0.05 } }}
+                                    transition={{ type: "spring", stiffness: 200, damping: 15, delay: idx * 0.05 }}
+                                    className="absolute top-1 left-1 pointer-events-auto"
                                 >
-                                    <div className="h-4 w-4 text-retro-bg">{item.icon}</div>
-                                </Link>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                                    <Link
+                                        href={item.href}
+                                        onClick={() => setOpen(false)}
+                                        className="h-10 w-10 rounded-full bg-retro-bg flex flex-col items-center justify-center border-2 border-retro-secondary/50 shadow-[0_0_10px_rgba(0,0,0,0.3)] hover:bg-retro-secondary/20 transition-all text-retro-text relative group"
+                                    >
+                                        <div className="h-4 w-4">{item.icon}</div>
+                                        <span className="absolute -top-7 bg-retro-secondary text-retro-bg text-[10px] px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md font-bold">
+                                            {item.title}
+                                        </span>
+                                    </Link>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
                 )}
             </AnimatePresence>
             <button
                 onClick={() => setOpen(!open)}
-                className="h-10 w-10 rounded-full bg-retro-secondary flex items-center justify-center"
+                className="relative z-50 h-12 w-12 rounded-full bg-gradient-to-tr from-retro-primary to-retro-accent shadow-[0_0_15px_rgba(159,226,191,0.5)] flex items-center justify-center border border-retro-primary/50 text-white"
             >
-                <IconLayoutNavbarCollapse className="h-5 w-5 text-retro-bg" />
+                <motion.div
+                    animate={{ rotate: open ? -180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <IconLayoutNavbarCollapse className="h-6 w-6" />
+                </motion.div>
             </button>
         </div>
     );
 };
 
-const FloatingDockDesktop = ({
+export const FloatingDockDesktop = ({
     items,
     className,
 }: {

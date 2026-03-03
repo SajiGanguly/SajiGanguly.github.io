@@ -11,7 +11,7 @@ import { GlowingStarsBackgroundCard } from "@/components/ui/glowing-stars-backgr
 import { TextRevealCard } from "@/components/ui/text-reveal-card";
 import { LampContainer } from "@/components/ui/lamp";
 import { MoveRight, Mail, Phone, Palette, Video, Youtube, Tv, HomeIcon, Briefcase, GraduationCap, Code, Heart, Contact, Sun, Moon, Leaf, Download, BookOpen, FolderGit2 } from "lucide-react";
-import { FloatingDock } from "@/components/ui/floating-dock";
+import { FloatingDockDesktop, FloatingDockMobile } from "@/components/ui/floating-dock";
 import { FloatingTechIcons } from "@/components/ui/floating-tech-icons";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { TracingBeam } from "@/components/ui/tracing-beam";
@@ -126,8 +126,8 @@ export default function Home() {
 
       {/* Floating Dock & Theme Selector - Fixed Top */}
       <div className="fixed top-4 inset-x-0 w-full flex justify-center z-50 pointer-events-none md:scale-100 scale-90">
-        <div className="pointer-events-auto shadow-xl rounded-2xl">
-          <FloatingDock items={navItems} />
+        <div className="pointer-events-auto shadow-xl rounded-2xl hidden md:block">
+          <FloatingDockDesktop items={navItems} />
         </div>
         <div className="absolute right-4 top-2 md:top-0 pointer-events-auto flex items-center gap-3">
           <a href="mailto:ganguly2904saji@gmail.com" className="p-3 md:p-[14px] bg-retro-bg border-2 border-retro-primary rounded-2xl text-retro-primary hover:text-white hover:bg-retro-primary hover:-translate-y-1 transition-all shadow-xl hover:shadow-2xl flex items-center justify-center">
@@ -422,6 +422,9 @@ export default function Home() {
           built by <span className="text-retro-primary font-bold">Saji Ganguly</span> <span className="mx-2 text-retro-accent">-</span> Creative Technologist
         </p>
       </footer>
+
+      {/* Mobile Floating Dock */}
+      <FloatingDockMobile items={navItems} className="fixed bottom-6 right-6" />
 
     </main>
   );
