@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { SparklesCore } from "@/components/ui/sparkles";
+import { ChecksBackground } from "@/components/ui/checks-background";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
@@ -18,6 +19,9 @@ import { FaLaptopCode, FaGithub, FaLinkedin, FaUser, FaYoutube, FaInstagram, FaP
 import { SiLeetcode, SiNetflix, SiAdobepremierepro } from "react-icons/si";
 import { useTheme } from "@/contexts/theme-context";
 import { FeaturedProjects } from "@/components/featured-projects";
+import { HeroProjectPin } from "@/components/hero-project-pin";
+import { ExperienceTabs } from "@/components/experience-tabs";
+import { EducationTimeline } from "@/components/education-timeline";
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -59,16 +63,7 @@ export default function Home() {
   ];
 
   const educationItems = [
-    {
-      title: "DSML (Data Science & Machine Learning) Program",
-      subtitle: <span className="text-retro-primary font-bold">Scaler Academy (currently pursuing)</span>,
-      description: (
-        <ul className="list-disc list-inside space-y-2 text-retro-text">
-          <li>Focused on advanced topics in data science, machine learning, and deep learning.</li>
-          <li>Curriculum includes practical projects and real-world case studies.</li>
-        </ul>
-      ),
-    },
+
     {
       title: "Bachelor of Technology (B.Tech)",
       subtitle: "Institute of Engineering and Management (July 2018 - Jun 2022)",
@@ -85,6 +80,16 @@ export default function Home() {
         </ul>
       ),
     },
+    {
+      title: "DSML (Data Science & Machine Learning) Program",
+      subtitle: <span className="text-retro-primary font-bold">Scaler Academy (currently pursuing)</span>,
+      description: (
+        <ul className="list-disc list-inside space-y-2 text-retro-text font-medium drop-shadow-sm">
+          <li>Focused on advanced topics in data science, machine learning, and deep learning.</li>
+          <li>Curriculum includes practical projects and real-world case studies.</li>
+        </ul>
+      ),
+    }
   ];
 
   const skillItems = [
@@ -106,14 +111,11 @@ export default function Home() {
 
       {/* Global Background Particles & Icons */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
-        <SparklesCore
-          background="transparent"
-          minSize={0.4}
-          maxSize={1.2}
-          particleDensity={200}
-          className="w-full h-full opacity-30"
-          particleColor="#9FE2BF"
-        />
+        <ChecksBackground variant="checkerboard" className="opacity-100" />
+        {/* You can also try:
+          <ChecksBackground variant="retro-grid" />
+          <ChecksBackground variant="crosses" /> 
+        */}
         {/* Subtle global edge fade */}
         <div className="absolute inset-0 w-full h-full bg-retro-bg [mask-image:radial-gradient(ellipse_at_center,transparent_0%,black_100%)]"></div>
       </div>
@@ -207,52 +209,44 @@ export default function Home() {
 
           </div>
 
-          {/* Right Panel: Glassmorphism Avatar Layered Depth */}
-          <div className="w-full lg:w-1/2 flex items-center justify-center relative mt-16 lg:mt-0 min-h-[400px]">
-            {/* Glowing Orbs behind the structure */}
-            <div className="absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-retro-primary/20 rounded-full blur-[80px] animate-pulse"></div>
-            <div className="absolute w-[250px] h-[250px] md:w-[350px] md:h-[350px] bg-retro-accent/20 rounded-full blur-[60px] animate-pulse delay-1000 -bottom-10 -right-10"></div>
+          {/* Right Panel: 3D Globe in Grid */}
+          <div className="w-full lg:w-1/2 flex items-center justify-center relative mt-16 lg:mt-0 min-h-[400px] lg:min-h-[500px]">
+            {/* Background Glow */}
+            <div className="absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-retro-primary/10 rounded-full blur-[80px] animate-pulse"></div>
+            <div className="absolute w-[250px] h-[250px] md:w-[350px] md:h-[350px] bg-retro-accent/15 rounded-full blur-[60px] animate-pulse delay-1000 -bottom-10 -right-10"></div>
 
-            {/* The Outer Frame / Rings */}
-            <div className="relative w-[300px] h-[300px] md:w-[420px] md:h-[420px] flex items-center justify-center">
+            {/* Grid background & Globe Container */}
+            <div className="relative w-full max-w-lg aspect-square flex items-center justify-center p-4 sm:p-8">
+              {/* Grid outline/frame */}
+              <div className="absolute inset-8 sm:inset-4 border border-retro-text/10 rounded-3xl bg-black/20 backdrop-blur-sm overflow-hidden flex items-center justify-center shadow-[0_0_30px_rgba(0,0,0,0.5)] group">
 
-              {/* 3D Rotating Rings */}
-              <div className="absolute inset-0 rounded-full border-[2px] border-retro-primary/30 [border-top-color:var(--color-primary)] shadow-[0_0_15px_var(--color-primary)] animate-[spin_10s_linear_infinite]"></div>
-              <div className="absolute inset-4 rounded-full border-[2px] border-retro-accent/20 [border-bottom-color:var(--color-accent)] animate-[spin_15s_reverse_linear_infinite]"></div>
-              <div className="absolute inset-8 rounded-full border-[1px] border-dashed border-retro-secondary/40 animate-[spin_25s_linear_infinite]"></div>
+                {/* Decorative Grid Lines */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none mix-blend-overlay"></div>
 
-              {/* Central Glassmorphism Avatar Wrapper */}
-              <div className="absolute inset-10 sm:inset-12 rounded-full bg-retro-text/5 backdrop-blur-2xl border border-retro-text/10 shadow-[0_0_30px_rgba(0,0,0,0.2)] flex items-center justify-center overflow-hidden transition-transform duration-500 hover:scale-105 group">
-                {/* Inner image/placeholder container */}
-                <div className="w-full h-full relative rounded-full overflow-hidden bg-gradient-to-br from-retro-primary/20 via-retro-bg/50 to-retro-accent/20 flex flex-col items-center justify-center">
-                  <span className="text-7xl sm:text-8xl font-black font-outfit text-transparent bg-clip-text bg-gradient-to-br from-retro-primary/80 to-retro-accent/80 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
-                    SG
-                  </span>
-                  {/* Inner shadow/vignette to blend */}
-                  <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(0,0,0,0.5)] rounded-full border border-retro-text/10 mix-blend-overlay pointer-events-none"></div>
+                {/* 4 corner accents */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-retro-primary/80 rounded-tl-3xl pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-retro-primary/80 rounded-tr-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-retro-accent/80 rounded-bl-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-retro-accent/80 rounded-br-3xl pointer-events-none"></div>
+
+                {/* Decorative HUD Elements */}
+                <div className="absolute top-4 right-4 text-[10px] font-mono text-retro-primary/60 tracking-widest hidden sm:block">SYS.GLOBAL.VIEW</div>
+                <div className="absolute bottom-4 left-4 text-[10px] font-mono text-retro-accent/60 tracking-widest hidden sm:block">LAT: VAR // LNG: VAR</div>
+
+                {/* The Interactive Project Pin */}
+                <div className="relative w-full h-full z-10 flex items-center justify-center">
+                  <HeroProjectPin />
                 </div>
               </div>
 
-              {/* Floating elements providing depth */}
-              {/* ONLINE Badge */}
-              <div className="absolute top-10 right-0 sm:-right-4 bg-retro-bg/80 backdrop-blur-xl border border-retro-text/10 px-4 py-2 rounded-full flex items-center gap-2 shadow-xl z-20 hover:scale-105 transition-transform cursor-default">
+              {/* ONLINE Badge (Moved out of the grid box) */}
+              <div className="absolute top-4 right-0 bg-retro-bg/90 backdrop-blur-xl border border-retro-text/10 px-4 py-2 rounded-full flex items-center gap-2 shadow-xl z-20 hover:scale-105 transition-transform cursor-default sm:right-0">
                 <div className="relative flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-retro-accent opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-retro-accent shadow-[0_0_10px_var(--color-accent)]"></span>
                 </div>
                 <span className="text-retro-accent text-xs font-bold font-mono tracking-wider">ONLINE</span>
               </div>
-
-              {/* Code Snippet Tag */}
-              <div className="absolute bottom-16 left-0 sm:-left-8 bg-retro-bg/80 backdrop-blur-xl border border-retro-text/10 p-3 sm:p-4 rounded-2xl shadow-xl z-20 rotate-[-12deg] hover:rotate-0 hover:scale-110 transition-all cursor-default">
-                <span className="text-retro-accent font-mono font-bold text-lg sm:text-xl">&lt;/&gt;</span>
-              </div>
-
-              {/* Tech Symbol Tag */}
-              <div className="absolute bottom-6 right-8 sm:-right-2 bg-retro-bg/80 backdrop-blur-xl border border-retro-text/20 p-3 sm:p-4 rounded-xl shadow-xl z-20 rotate-[15deg] hover:rotate-0 hover:scale-110 transition-all font-bold font-mono text-xl cursor-default text-retro-primary">
-                {`{ }`}
-              </div>
-
             </div>
           </div>
 
@@ -289,14 +283,18 @@ export default function Home() {
 
         {/* Experiences Section */}
         <section id="experiences" className="relative w-full min-h-[100dvh] flex flex-col justify-center py-24">
-          <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block mb-4">Experiences</h2>
-          <HoverEffect items={experienceItems} />
+          <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-4">
+            <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block">Experiences</h2>
+          </div>
+          <ExperienceTabs items={experienceItems} />
         </section>
 
         {/* Education Section */}
-        <section id="education" className="relative w-full min-h-[100dvh] flex flex-col justify-center py-24">
-          <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block mb-4">Education & Development</h2>
-          <HoverEffect items={educationItems} />
+        <section id="education" className="relative w-full flex flex-col justify-center py-24">
+          <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-4">
+            <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block">Education & Development</h2>
+          </div>
+          <EducationTimeline items={educationItems} />
         </section>
 
         {/* Skills Section */}
