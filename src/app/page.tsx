@@ -195,8 +195,8 @@ export default function Home() {
               className="mt-8 pt-4 flex justify-center lg:justify-start w-full"
             >
               <a
-                href="/resume.pdf"
-                download="Saji_Ganguly_Resume.pdf"
+                href="/Saji_Ganguly_Resume.jpg"
+                download="Saji_Ganguly_Resume.jpg"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-retro-primary via-purple-500 to-retro-accent rounded-full text-white font-black tracking-wide text-lg overflow-hidden shadow-[0_0_20px_rgba(159,226,191,0.5)] hover:shadow-[0_0_35px_rgba(159,226,191,0.8)] hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Shine effect overlay */}
