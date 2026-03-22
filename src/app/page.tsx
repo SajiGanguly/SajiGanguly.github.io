@@ -104,6 +104,7 @@ export default function Home() {
     { quote: "", name: "MongoDB & MySQL", title: "Databases" },
     { quote: "", name: "Git & Jira", title: "Tools" },
     { quote: "", name: "Azure Blob Storage", title: "Cloud" },
+    { quote: "", name: "Antigravity", title: "AI Agent" },
   ];
 
   return (
