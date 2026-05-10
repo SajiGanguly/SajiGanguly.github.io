@@ -19,28 +19,30 @@
 }
 
 :root {
-  /* Default - Retro Revival */
-  --color-bg: #fff0f5;
-  --color-text: #1a051a;
-  --color-primary: #ffb6c1;
-  --color-secondary: #4a0e4e;
-  --color-accent: #9fe2bf;
+  /* Default - Professional Light Blue */
+  --color-bg: #f0f9ff; /* Sky 50 */
+  --color-text: #0c4a6e; /* Sky 900 */
+  --color-primary: #0369a1; /* Sky 700 */
+  --color-secondary: #0284c7; /* Sky 600 */
+  --color-accent: #0ea5e9; /* Sky 500 */
 }
 
 html[data-theme='dark'] {
-  --color-bg: #1a051a;
-  --color-text: #fdf4ff;
-  --color-primary: #4a0e4e;
-  --color-secondary: #9fe2bf;
-  --color-accent: #ffb6c1;
+  /* Dark - Professional Navy */
+  --color-bg: #082f49; /* Sky 950 */
+  --color-text: #f0f9ff; /* Sky 50 */
+  --color-primary: #38bdf8; /* Sky 400 */
+  --color-secondary: #7dd3fc; /* Sky 300 */
+  --color-accent: #bae6fd; /* Sky 200 */
 }
 
 html[data-theme='mint'] {
-  --color-bg: #eafff5;
-  --color-text: #301934;
-  --color-primary: #9fe2bf;
-  --color-secondary: #ffb6c1;
-  --color-accent: #4a0e4e;
+  /* Alternative - Clean Corporate Blue */
+  --color-bg: #ffffff; /* White */
+  --color-text: #1e293b; /* Slate 800 */
+  --color-primary: #2563eb; /* Blue 600 */
+  --color-secondary: #3b82f6; /* Blue 500 */
+  --color-accent: #60a5fa; /* Blue 400 */
 }
 
 @layer utilities {

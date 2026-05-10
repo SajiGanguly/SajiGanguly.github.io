@@ -10,7 +10,7 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { GlowingStarsBackgroundCard } from "@/components/ui/glowing-stars-background-card";
 import { TextRevealCard } from "@/components/ui/text-reveal-card";
 import { LampContainer } from "@/components/ui/lamp";
-import { MoveRight, Mail, Phone, Palette, Video, Youtube, Tv, HomeIcon, Briefcase, GraduationCap, Code, Heart, Contact, Sun, Moon, Leaf, Download, BookOpen, FolderGit2 } from "lucide-react";
+import { MoveRight, Mail, Phone, Palette, Video, Youtube, Tv, HomeIcon, Briefcase, GraduationCap, Code, Heart, Contact, Sun, Moon, Monitor, Download, BookOpen, FolderGit2 } from "lucide-react";
 import { FloatingDockDesktop, FloatingDockMobile } from "@/components/ui/floating-dock";
 import { FloatingTechIcons } from "@/components/ui/floating-tech-icons";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
@@ -39,24 +39,27 @@ export default function Home() {
 
   const experienceItems = [
     {
-      title: "Data Analyst",
-      subtitle: "Enigma Data (11/2024 - 05/2025)",
+      title: "Data Analyst & Power BI Developer",
+      subtitle: "Enigma Data, Delhi, India (Nov 2024 - May 2025)",
       description: (
         <ul className="list-disc list-inside space-y-2">
-          <li>Built Power BI dashboards, optimized SQL queries, and automated web scraping using Python.</li>
-          <li>Set up Azure Blob Storage and implemented pipeline error handling.</li>
-          <li>Delivered custom data solutions with cross-functional teams.</li>
+          <li>Delivered interactive Power BI dashboards with DAX for real-time business metric visibility across e-commerce platforms (Nykaa, Amazon), empowering stakeholder decisions with self-service analytics.</li>
+          <li>Engineered automated Python scraping pipelines (Selenium/BeautifulSoup) to harvest large-scale market datasets, cutting manual effort by ~70% and enabling faster time-to-insight.</li>
+          <li>Optimized multi-join SQL queries, reducing data retrieval latency by ~40% and streamlining end-to-end reporting pipelines.</li>
+          <li>Architected Azure Blob Storage pipelines with automated error-handling, ensuring high data integrity across daily batch processes.</li>
+          <li>Collaborated with cross-functional stakeholders to translate business requirements into analytical deliverables and dashboard metrics.</li>
         </ul>
       ),
     },
     {
-      title: "Jr. Software Engineer",
-      subtitle: "Entiovi Technologies (06/2023 - 08/2024)",
+      title: "Junior Software Engineer",
+      subtitle: "Entiovi Technologies, Kolkata, India (Jun 2023 - Aug 2024)",
       description: (
         <ul className="list-disc list-inside space-y-2">
-          <li>Built full-stack MERN apps with features like JWT/OAuth auth, product management, and payments.</li>
-          <li>Developed RESTful APIs with MySQL/MongoDB; enhanced performance and UX via code reviews.</li>
-          <li>Contributed HTML/CSS for Cleared Talent hiring platform.</li>
+          <li>Engineered full-stack MERN stack applications with JWT/OAuth authentication for the Cleared Talent hiring platform serving enterprise clients.</li>
+          <li>Designed and maintained RESTful APIs (MySQL & MongoDB), ensuring reliable data flow and sub-200ms response times.</li>
+          <li>Improved React.js front-end performance and responsive UX, contributing measurably to increased user engagement metrics.</li>
+          <li>Delivered sprint commitments consistently in agile team; participated in code reviews and technical design discussions.</li>
         </ul>
       ),
     },
@@ -74,41 +77,38 @@ export default function Home() {
       subtitle: "Various platforms",
       description: (
         <ul className="list-disc list-inside space-y-2">
-          <li>Python for Data Science - Learnbay</li>
-          <li>HTML, CSS, and React - Udemy</li>
-          <li>Microsoft Power BI Desktop</li>
+          <li>Microsoft Power BI Data Analyst</li>
+          <li>Python for Data Science (Learnbay)</li>
         </ul>
       ),
     },
     {
       title: "DSML (Data Science & Machine Learning) Program",
-      subtitle: <span className="text-retro-primary font-bold">Scaler Academy (currently pursuing)</span>,
+      subtitle: <span className="text-retro-primary font-bold">Scaler Academy (Aug 2025 - Present)</span>,
       description: (
         <ul className="list-disc list-inside space-y-2 text-retro-text font-medium drop-shadow-sm">
+          <li>Pursuing advanced Data Science & ML expertise.</li>
           <li>Focused on advanced topics in data science, machine learning, and deep learning.</li>
-          <li>Curriculum includes practical projects and real-world case studies.</li>
         </ul>
       ),
     }
   ];
 
   const skillItems = [
-    { quote: "", name: "Python", title: "Data / Backend" },
-    { quote: "", name: "SQL", title: "Database" },
-    { quote: "", name: "Power BI & DAX", title: "Data Visualization" },
-    { quote: "", name: "Data Modelling", title: "Data Engineering" },
-    { quote: "", name: "Web Scraping", title: "Data Extraction" },
-    { quote: "", name: "JavaScript", title: "Programming" },
-    { quote: "", name: "React.js", title: "Frontend" },
-    { quote: "", name: "Node.js & Express", title: "Backend" },
-    { quote: "", name: "MongoDB & MySQL", title: "Databases" },
+    { quote: "", name: "Power BI & DAX", title: "Data & Analytics" },
+    { quote: "", name: "Python (Pandas, Numpy, Selenium)", title: "Programming" },
+    { quote: "", name: "Google Antigravity", title: "AI/Agentic" },
+    { quote: "", name: "React.js & Node.js", title: "Frontend & Backend" },
+    { quote: "", name: "Azure Blob Storage & RESTful APIs", title: "Cloud & DevOps" },
+    { quote: "", name: "SQL (PostgreSQL, MySQL)", title: "Data & Analytics" },
+    { quote: "", name: "JavaScript & HTML5/CSS3", title: "Programming" },
+    { quote: "", name: "MongoDB & Firebase", title: "Databases" },
     { quote: "", name: "Git & Jira", title: "Tools" },
-    { quote: "", name: "Azure Blob Storage", title: "Cloud" },
-    { quote: "", name: "Antigravity", title: "AI Agent" },
+    { quote: "", name: "Data Modelling & Machine Learning", title: "Data & Analytics" },
   ];
 
   return (
-    <main className="min-h-screen relative w-full overflow-hidden bg-retro-bg text-retro-text transition-colors duration-500 font-sans pb-32">
+    <main className="min-h-screen relative w-full overflow-hidden bg-retro-bg text-retro-text transition-colors duration-500 font-sans">
 
       {/* Global Background Particles & Icons */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
@@ -144,7 +144,7 @@ export default function Home() {
           >
             {theme === "default" && <Sun className="w-5 h-5" />}
             {theme === "dark" && <Moon className="w-5 h-5" />}
-            {theme === "mint" && <Leaf className="w-5 h-5" />}
+            {theme === "mint" && <Monitor className="w-5 h-5" />}
           </button>
         </div>
       </div>
@@ -167,16 +167,16 @@ export default function Home() {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                className="text-6xl sm:text-7xl lg:text-8xl font-black font-outfit text-transparent bg-clip-text bg-gradient-to-r from-retro-primary via-purple-400 to-retro-accent tracking-tighter leading-tight text-center lg:text-left"
+                className="text-6xl sm:text-7xl lg:text-8xl font-black font-outfit text-transparent bg-clip-text bg-gradient-to-r from-retro-primary to-retro-accent tracking-tighter leading-tight text-center lg:text-left"
               >
                 SAJI GANGULY
               </motion.h1>
             </div>
 
             <p className="text-lg md:text-xl text-retro-text/80 font-light leading-relaxed max-w-lg mt-4 [font-family:var(--font-geist-sans)]">
-              Passionate software engineer specializing in building
-              <span className="font-bold text-retro-primary px-1">Meaningful and Insightful</span>
-              applications and <span className="font-bold text-retro-accent px-1">data-driven</span> solutions.
+              Results-driven Data Analyst & Full-Stack Developer with 2+ years building
+              <span className="font-bold text-retro-primary px-1">data-driven applications</span>,
+              automated dashboards, and scalable <span className="font-bold text-retro-accent px-1">web solutions</span>.
             </p>
 
             {/* Skill Pills */}
@@ -196,9 +196,9 @@ export default function Home() {
               className="mt-8 pt-4 flex justify-center lg:justify-start w-full"
             >
               <a
-                href="/Saji_Ganguly_Resume.jpg"
-                download="Saji_Ganguly_Resume.jpg"
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-retro-primary via-purple-500 to-retro-accent rounded-full text-white font-black tracking-wide text-lg overflow-hidden shadow-[0_0_20px_rgba(159,226,191,0.5)] hover:shadow-[0_0_35px_rgba(159,226,191,0.8)] hover:-translate-y-1 transition-all duration-300"
+                href="/resume/Saji_Ganguly_Resume.pdf"
+                download="Saji_Ganguly_Resume.pdf"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-retro-primary to-retro-accent rounded-full text-white font-black tracking-wide text-lg overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Shine effect overlay */}
                 <div className="absolute inset-0 -translate-x-full skew-x-12 bg-white/30 group-hover:animate-[shimmer_1s_forwards]"></div>
@@ -213,8 +213,8 @@ export default function Home() {
           {/* Right Panel: 3D Globe in Grid */}
           <div className="w-full lg:w-1/2 flex items-center justify-center relative mt-16 lg:mt-0 min-h-[400px] lg:min-h-[500px]">
             {/* Background Glow */}
-            <div className="absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-retro-primary/10 rounded-full blur-[80px] animate-pulse"></div>
-            <div className="absolute w-[250px] h-[250px] md:w-[350px] md:h-[350px] bg-retro-accent/15 rounded-full blur-[60px] animate-pulse delay-1000 -bottom-10 -right-10"></div>
+            <div className="absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-retro-primary/5 rounded-full blur-[100px]"></div>
+            <div className="absolute w-[250px] h-[250px] md:w-[350px] md:h-[350px] bg-retro-accent/5 rounded-full blur-[80px] -bottom-10 -right-10"></div>
 
             {/* Grid background & Globe Container */}
             <div className="relative w-full max-w-lg aspect-square flex items-center justify-center p-4 sm:p-8">
@@ -262,10 +262,10 @@ export default function Home() {
               <h2 className="text-3xl md:text-5xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block drop-shadow-md mb-8">About Me</h2>
               <div className="bg-retro-bg/80 border-retro-secondary/50 border-2 rounded-xl p-6 md:p-8 shadow-lg backdrop-blur-sm">
                 <p className="text-lg text-retro-text mb-4 opacity-90 leading-relaxed">
-                  I am an adaptable and detail-oriented professional transitioning fully into the data analytics space. With a foundational background in full-stack development, I have recently pivoted my focus toward my true passion: extracting meaningful stories from raw data.
+                  Results-driven Data Analyst & Full-Stack Developer with 2+ years building data-driven applications, automated dashboards, and scalable web solutions. Skilled in bridging business requirements with technical implementation — from Power BI dashboards to MERN stack apps and automated Python pipelines.
                 </p>
                 <p className="text-lg text-retro-text mb-6 opacity-90 leading-relaxed">
-                  I am currently expanding my analytical expertise through an advanced Data Science and Machine Learning program , actively honing my skills in Python, SQL, and Power BI. I am eager to bring my creative problem-solving approach to a Junior Data Analyst role, where I can learn, grow, and contribute to impactful data-driven projects.
+                  Adept at cross-functional collaboration, agile delivery, and cloud-integrated data solutions. Currently pursuing advanced Data Science & Machine Learning expertise at Scaler Academy to further hone my analytical capabilities.
                 </p>
                 <div className="flex flex-wrap gap-3 mt-auto">
                   <span className="px-4 py-1.5 bg-retro-primary/20 text-retro-primary rounded-full text-sm font-bold border border-retro-primary/50 shadow-sm">Data Analytics</span>
@@ -315,44 +315,51 @@ export default function Home() {
 
         {/* Hobbies Section */}
         <section id="hobbies" className="relative w-full min-h-[100dvh] flex flex-col justify-center py-24">
-          <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block mb-12">When I'm Not Coding</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <GlowingStarsBackgroundCard className="min-h-[220px] flex flex-col items-center justify-center text-center">
-              <FaPalette className="w-12 h-12 mb-4 drop-shadow-xl" style={{ color: "#FFaa00" }} />
-              <h3 className="font-bold text-xl text-retro-text">Painting</h3>
-            </GlowingStarsBackgroundCard>
-            <GlowingStarsBackgroundCard className="min-h-[220px] flex flex-col items-center justify-center text-center">
-              <div
-                className="w-12 h-12 mb-4 drop-shadow-xl flex items-center justify-center rounded-lg"
-                style={{ backgroundColor: "#00005C" }}
-              >
-                <SiAdobepremierepro className="w-8 h-8" style={{ color: "#99A5FF" }} />
+          <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-12">
+            <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block">Beyond the Code</h2>
+            <p className="mt-4 text-retro-text/70 max-w-2xl text-lg">Exploring creativity and narratives through various mediums when I'm away from the keyboard.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto w-full px-4 md:px-0">
+            {/* Card 1 */}
+            <div className="group p-8 bg-black/20 border border-retro-primary/20 hover:border-retro-primary/60 rounded-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--color-primary),0.1)] hover:-translate-y-1 backdrop-blur-xl flex flex-col items-center justify-center text-center">
+              <div className="w-16 h-16 rounded-2xl bg-retro-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-retro-primary/20 transition-all duration-300">
+                <Palette className="w-8 h-8 text-retro-primary" strokeWidth={1.5} />
               </div>
-              <h3 className="font-bold text-xl text-retro-text">Video Editing</h3>
-            </GlowingStarsBackgroundCard>
-            <GlowingStarsBackgroundCard className="min-h-[220px] flex flex-col items-center justify-center text-center">
-              <div className="flex gap-4 mb-4 drop-shadow-xl">
-                <FaYoutube className="w-12 h-12" style={{ color: "#FF0000" }} />
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{ background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)" }}
-                >
-                  <FaInstagram className="w-8 h-8 text-white" />
-                </div>
+              <h3 className="font-bold text-xl text-retro-text mb-2">Visual Arts</h3>
+              <p className="text-sm text-retro-text/60">Digital & Traditional Painting</p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group p-8 bg-black/20 border border-retro-accent/20 hover:border-retro-accent/60 rounded-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--color-accent),0.1)] hover:-translate-y-1 backdrop-blur-xl flex flex-col items-center justify-center text-center">
+              <div className="w-16 h-16 rounded-2xl bg-retro-accent/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-retro-accent/20 transition-all duration-300">
+                <Video className="w-8 h-8 text-retro-accent" strokeWidth={1.5} />
               </div>
-              <h3 className="font-bold text-xl text-retro-text">Social Media</h3>
-              <p className="opacity-90 text-sm mt-1 text-retro-text">YouTube & IG</p>
-            </GlowingStarsBackgroundCard>
-            <GlowingStarsBackgroundCard className="min-h-[220px] flex flex-col items-center justify-center text-center">
-              <SiNetflix className="w-12 h-12 mb-4 drop-shadow-xl" style={{ color: "#E50914" }} />
-              <h3 className="font-bold text-xl text-retro-text">Bingeing</h3>
-              <p className="opacity-90 text-sm mt-1 text-retro-text">Netflix</p>
-            </GlowingStarsBackgroundCard>
+              <h3 className="font-bold text-xl text-retro-text mb-2">Video Production</h3>
+              <p className="text-sm text-retro-text/60">Editing & Post-Production</p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group p-8 bg-black/20 border border-retro-primary/20 hover:border-retro-primary/60 rounded-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--color-primary),0.1)] hover:-translate-y-1 backdrop-blur-xl flex flex-col items-center justify-center text-center">
+              <div className="w-16 h-16 rounded-2xl bg-retro-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-retro-primary/20 transition-all duration-300">
+                <Youtube className="w-8 h-8 text-retro-primary" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-xl text-retro-text mb-2">Content Creation</h3>
+              <p className="text-sm text-retro-text/60">YouTube & Social Media</p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="group p-8 bg-black/20 border border-retro-accent/20 hover:border-retro-accent/60 rounded-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--color-accent),0.1)] hover:-translate-y-1 backdrop-blur-xl flex flex-col items-center justify-center text-center">
+              <div className="w-16 h-16 rounded-2xl bg-retro-accent/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-retro-accent/20 transition-all duration-300">
+                <Tv className="w-8 h-8 text-retro-accent" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-xl text-retro-text mb-2">Film & Media</h3>
+              <p className="text-sm text-retro-text/60">Exploring Narratives</p>
+            </div>
           </div>
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative w-full z-10">
+        <section id="contact" className="relative w-full z-10 scroll-mt-32">
           <LampContainer>
             <motion.div
               initial={{ opacity: 0.5, y: 100 }}
