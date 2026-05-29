@@ -170,10 +170,7 @@ export default function Home() {
             </div>
 
             <p className="text-lg md:text-xl text-retro-text/80 font-light leading-relaxed max-w-lg mt-4 [font-family:var(--font-geist-sans)]">
-              Data Analyst with 2+ years of experience delivering actionable insights for e-commerce using 
-              <span className="font-bold text-retro-primary px-1">Power BI, SQL, and Python</span>. 
-              Skilled in collaborating with stakeholders, bridging data and product teams with a software engineering background, and expanding into 
-              <span className="font-bold text-retro-accent px-1">Advanced Machine Learning</span> at Scaler Academy.
+              Data Analyst with experience in creating dashboards, working with data, and generating insights using <span className="font-bold text-retro-primary px-1">Power BI, SQL, and Python</span>.
             </p>
 
             {/* Skill Pills */}
@@ -259,7 +256,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-5xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block drop-shadow-md mb-8">About Me</h2>
               <div className="bg-retro-bg/80 border-retro-secondary/50 border-2 rounded-xl p-6 md:p-8 shadow-lg backdrop-blur-sm">
                 <p className="text-lg text-retro-text mb-4 opacity-90 leading-relaxed">
-                  Results-driven Data Analyst & Full-Stack Developer with 2+ years building data-driven applications, automated dashboards, and scalable web solutions. Skilled in bridging business requirements with technical implementation — from Power BI dashboards to MERN stack apps and automated Python pipelines.
+                  Results-driven Data Analyst with 2+ years building data-driven applications, automated dashboards, and highly optimized data processes. Skilled in bridging business requirements with technical implementation — from interactive Power BI dashboards to automated Python web-scraping pipelines and robust database structures.
                 </p>
                 <p className="text-lg text-retro-text mb-6 opacity-90 leading-relaxed">
                   Adept at cross-functional collaboration, agile delivery, and cloud-integrated data solutions. Currently pursuing advanced Data Science & Machine Learning expertise at Scaler Academy to further hone my analytical capabilities.
