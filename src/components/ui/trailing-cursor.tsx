@@ -10,8 +10,8 @@ export const TrailingCursor = () => {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Increased stiffness, decreased damping and mass for a faster, snappy feel
-    const springConfig = { damping: 20, stiffness: 400, mass: 0.2 };
+    // Dynamic spring config for smooth trailing animation (snappy, low-mass configuration)
+    const springConfig = { damping: 20, stiffness: 480, mass: 0.15 };
     const cursorXSpring = useSpring(mouseX, springConfig);
     const cursorYSpring = useSpring(mouseY, springConfig);
 
@@ -28,7 +28,7 @@ export const TrailingCursor = () => {
         const handleMouseOver = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
 
-            // Check if we are hovering over an anchor, button, or any interactive element
+            // Check if we are hovering over an anchor, button, or pointer element
             if (
                 target.tagName.toLowerCase() === 'a' ||
                 target.tagName.toLowerCase() === 'button' ||
@@ -55,43 +55,20 @@ export const TrailingCursor = () => {
 
     return (
         <>
-            <style dangerouslySetInnerHTML={{
-                __html: `
-        @media (pointer: fine) {
-          body, a, button, [role="button"], input, select, textarea { 
-            cursor: none !important; 
-          }
-        }
-      `}} />
-
-            {/* The main solid dot */}
+            {/* Elegant micro trailing ring (keeps the default OS cursor visible for perfect snappiness) */}
             <motion.div
-                className="pointer-events-none fixed left-0 top-0 z-[9999] h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white hidden sm:block mix-blend-difference"
-                style={{
-                    x: mouseX,
-                    y: mouseY,
-                }}
-                animate={{
-                    scale: isHovering ? 0 : 1,
-                    opacity: isHovering ? 0 : 1,
-                }}
-                transition={{ duration: 0.15 }}
-            />
-
-            {/* The trailing ring */}
-            <motion.div
-                className="pointer-events-none fixed left-0 top-0 z-[9998] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white hidden sm:block mix-blend-difference"
+                className="pointer-events-none fixed left-0 top-0 z-[9999] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white hidden sm:block mix-blend-difference"
                 style={{
                     x: cursorXSpring,
                     y: cursorYSpring,
                 }}
                 animate={{
-                    width: isHovering ? 56 : 32,
-                    height: isHovering ? 56 : 32,
-                    backgroundColor: isHovering ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)",
-                    scale: isHovering ? 1.2 : 1,
+                    width: isHovering ? 28 : 14,
+                    height: isHovering ? 28 : 14,
+                    borderColor: isHovering ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0.65)",
+                    scale: isHovering ? 1.15 : 1,
                 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
             />
         </>
     );

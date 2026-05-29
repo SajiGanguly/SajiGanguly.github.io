@@ -8,8 +8,60 @@ import {
     useSpring,
     useTransform,
 } from "framer-motion";
-import Link from "next/link";
 import { useRef, useState } from "react";
+import Link from "next/link";
+
+// SNAPPY HIGH-PERFORMANCE CUSTOM SCROLL WRAPPER
+// Temporarily overrides browser's slow easing to jump to targets in a swift 500ms ease-out decelerating sweep.
+// Offsets target scroll position by 85px to perfectly align with top headers under the floating menu.
+const handleSwiftScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return;
+    e.preventDefault();
+    const targetElement = document.querySelector(href);
+    if (!targetElement) return;
+
+    const html = document.documentElement;
+    const originalScrollBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = "auto";
+
+    const rect = targetElement.getBoundingClientRect();
+    const elementTop = rect.top + window.scrollY;
+    const elementHeight = rect.height;
+    const viewportHeight = window.innerHeight;
+
+    // Perfectly center the section vertically. If the section is taller than the viewport,
+    // align it near the top (with a tight 20px offset) to prevent the previous section's cards from peeking in.
+    let targetPosition = elementTop - (viewportHeight - elementHeight) / 2;
+    if (elementHeight > viewportHeight) {
+        targetPosition = elementTop - 20;
+    }
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = 500; // Swift 500ms animation
+    let startTime: number | null = null;
+
+    const animateScroll = (currentTime: number) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        
+        // Quadratic ease-out curve (decelerates smoothly)
+        const progress = Math.min(timeElapsed / duration, 1);
+        const easeOut = progress * (2 - progress);
+        
+        window.scrollTo(0, startPosition + distance * easeOut);
+        
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animateScroll);
+        } else {
+            // Restore original HTML scrolling behavior
+            html.style.scrollBehavior = originalScrollBehavior;
+            // Push hash state to browser history cleanly without snapping
+            window.history.pushState(null, "", href);
+        }
+    };
+
+    requestAnimationFrame(animateScroll);
+};
 
 export const FloatingDock = ({
     items,
@@ -73,7 +125,10 @@ export const FloatingDockMobile = ({
                                 >
                                     <Link
                                         href={item.href}
-                                        onClick={() => setOpen(false)}
+                                        onClick={(e) => {
+                                            setOpen(false);
+                                            handleSwiftScroll(e, item.href);
+                                        }}
                                         className="h-10 w-10 rounded-full bg-retro-bg flex flex-col items-center justify-center border-2 border-retro-secondary/50 shadow-[0_0_10px_rgba(0,0,0,0.3)] hover:bg-retro-secondary/20 transition-all text-retro-text relative group"
                                     >
                                         <div className="h-4 w-4">{item.icon}</div>
@@ -180,7 +235,7 @@ function IconContainer({
     const [hovered, setHovered] = useState(false);
 
     return (
-        <Link href={href}>
+        <Link href={href} onClick={(e) => handleSwiftScroll(e, href)}>
             <motion.div
                 ref={ref}
                 style={{ width, height }}

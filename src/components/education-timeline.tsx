@@ -61,11 +61,21 @@ export const EducationTimeline = ({
                                 {item.title}
                             </h3>
 
-                            <div className="bg-black/40 backdrop-blur-xl border border-retro-secondary/40 rounded-2xl p-6 md:p-8 shadow-xl hover:border-retro-primary/50 transition-colors duration-300">
-                                <div className="text-retro-primary font-mono mb-4 font-bold text-lg md:text-xl drop-shadow-md">
+                            <div className="bg-gradient-to-br from-black/60 to-black/35 backdrop-blur-xl border border-retro-secondary/20 rounded-2xl p-6 md:p-8 shadow-[0_12px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_18px_40px_rgba(0,0,0,0.45)] hover:border-retro-accent/40 hover:-translate-y-0.5 transition-all duration-500 relative overflow-hidden group">
+                                {/* Dynamic corner frame accents */}
+                                <div className="absolute top-0 left-0 w-10 h-[2px] bg-gradient-to-r from-retro-accent via-retro-primary/40 to-transparent transition-all duration-500 group-hover:w-20"></div>
+                                <div className="absolute top-0 left-0 w-[2px] h-10 bg-gradient-to-b from-retro-accent via-retro-primary/40 to-transparent transition-all duration-500 group-hover:h-20"></div>
+                                
+                                <div className="absolute bottom-0 right-0 w-10 h-[2px] bg-gradient-to-l from-retro-primary via-retro-accent/40 to-transparent transition-all duration-500 group-hover:w-20"></div>
+                                <div className="absolute bottom-0 right-0 w-[2px] h-10 bg-gradient-to-t from-retro-primary via-retro-accent/40 to-transparent transition-all duration-500 group-hover:h-20"></div>
+
+                                {/* Subtle inner card light bleed glow */}
+                                <div className="absolute -top-16 -left-16 w-32 h-32 bg-retro-accent/5 rounded-full blur-2xl pointer-events-none group-hover:bg-retro-accent/10 transition-all duration-500"></div>
+
+                                <div className="text-retro-primary font-mono mb-4 font-bold text-lg md:text-xl drop-shadow-md relative z-10">
                                     {item.subtitle}
                                 </div>
-                                <div className="text-retro-text font-medium leading-relaxed text-sm md:text-base opacity-100">
+                                <div className="text-retro-text/90 font-medium leading-relaxed text-sm md:text-base opacity-100 relative z-10">
                                     {item.description}
                                 </div>
                             </div>

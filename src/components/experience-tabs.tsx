@@ -59,16 +59,26 @@ export const ExperienceTabs = ({
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="bg-black/40 backdrop-blur-xl border border-retro-secondary/40 rounded-3xl p-8 md:p-10 shadow-2xl hover:border-retro-primary/40 transition-colors duration-500"
+                        className="bg-gradient-to-br from-black/60 to-black/35 backdrop-blur-xl border border-retro-secondary/20 rounded-3xl p-8 md:p-10 shadow-[0_15px_35px_rgba(0,0,0,0.35)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.5)] hover:border-retro-primary/40 hover:-translate-y-0.5 transition-all duration-500 relative overflow-hidden group"
                     >
-                        <h3 className="text-3xl md:text-4xl font-bold font-serif text-retro-text tracking-wide drop-shadow-md">
+                        {/* Dynamic corner frame accents */}
+                        <div className="absolute top-0 left-0 w-12 h-[2px] bg-gradient-to-r from-retro-primary via-retro-accent/50 to-transparent transition-all duration-500 group-hover:w-24"></div>
+                        <div className="absolute top-0 left-0 w-[2px] h-12 bg-gradient-to-b from-retro-primary via-retro-accent/50 to-transparent transition-all duration-500 group-hover:h-24"></div>
+                        
+                        <div className="absolute bottom-0 right-0 w-12 h-[2px] bg-gradient-to-l from-retro-accent via-retro-primary/50 to-transparent transition-all duration-500 group-hover:w-24"></div>
+                        <div className="absolute bottom-0 right-0 w-[2px] h-12 bg-gradient-to-t from-retro-accent via-retro-primary/50 to-transparent transition-all duration-500 group-hover:h-24"></div>
+
+                        {/* Subtle inner card light bleed glow */}
+                        <div className="absolute -top-24 -left-24 w-48 h-48 bg-retro-primary/5 rounded-full blur-3xl pointer-events-none group-hover:bg-retro-primary/10 transition-all duration-500"></div>
+
+                        <h3 className="text-3xl md:text-4xl font-bold font-serif text-retro-text tracking-wide drop-shadow-md relative z-10">
                             {items[activeTab].title}
                         </h3>
-                        <p className="text-retro-primary font-mono mt-3 mb-8 text-lg font-bold drop-shadow-sm flex items-center gap-2">
+                        <p className="text-retro-primary font-mono mt-3 mb-8 text-lg font-bold drop-shadow-sm flex items-center gap-2 relative z-10">
                             <span className="w-1.5 h-1.5 rounded-full bg-retro-primary animate-pulse inline-block"></span>
                             {items[activeTab].subtitle}
                         </p>
-                        <div className="text-retro-text font-medium leading-relaxed text-base md:text-lg opacity-100">
+                        <div className="text-retro-text/90 font-medium leading-relaxed text-base md:text-lg opacity-100 relative z-10">
                             {items[activeTab].description}
                         </div>
                     </motion.div>

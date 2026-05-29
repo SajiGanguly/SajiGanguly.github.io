@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { SparklesCore } from "@/components/ui/sparkles";
-import { ChecksBackground } from "@/components/ui/checks-background";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
@@ -39,7 +39,7 @@ export default function Home() {
 
   const experienceItems = [
     {
-      title: "Data Analyst & Power BI Developer",
+      title: "Data Analyst",
       subtitle: "Enigma Data, Delhi, India (Nov 2024 - May 2025)",
       description: (
         <ul className="list-disc list-inside space-y-2">
@@ -112,11 +112,7 @@ export default function Home() {
 
       {/* Global Background Particles & Icons */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
-        <ChecksBackground variant="checkerboard" className="opacity-100" />
-        {/* You can also try:
-          <ChecksBackground variant="retro-grid" />
-          <ChecksBackground variant="crosses" /> 
-        */}
+        <AuroraBackground className="opacity-100" />
         {/* Subtle global edge fade */}
         <div className="absolute inset-0 w-full h-full bg-retro-bg [mask-image:radial-gradient(ellipse_at_center,transparent_0%,black_100%)]"></div>
       </div>
@@ -159,7 +155,7 @@ export default function Home() {
 
 
             <h2 className="text-lg md:text-xl font-bold tracking-widest text-retro-text opacity-70 uppercase mt-4">
-              Data Analyst & Full-Stack Developer
+              Data Analyst & Analytics Engineer
             </h2>
 
             <div className="relative -ml-1 text-center lg:text-left w-full lg:w-auto overflow-hidden py-2">
@@ -167,16 +163,17 @@ export default function Home() {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                className="text-6xl sm:text-7xl lg:text-8xl font-black font-outfit text-transparent bg-clip-text bg-gradient-to-r from-retro-primary to-retro-accent tracking-tighter leading-tight text-center lg:text-left"
+                className="text-5xl sm:text-6xl lg:text-7xl font-black font-outfit text-transparent bg-clip-text bg-gradient-to-r from-retro-primary to-retro-accent tracking-tighter leading-tight text-center lg:text-left"
               >
                 SAJI GANGULY
               </motion.h1>
             </div>
 
             <p className="text-lg md:text-xl text-retro-text/80 font-light leading-relaxed max-w-lg mt-4 [font-family:var(--font-geist-sans)]">
-              Results-driven Data Analyst & Full-Stack Developer with 2+ years building
-              <span className="font-bold text-retro-primary px-1">data-driven applications</span>,
-              automated dashboards, and scalable <span className="font-bold text-retro-accent px-1">web solutions</span>.
+              Data Analyst with 2+ years of experience delivering actionable insights for e-commerce using 
+              <span className="font-bold text-retro-primary px-1">Power BI, SQL, and Python</span>. 
+              Skilled in collaborating with stakeholders, bridging data and product teams with a software engineering background, and expanding into 
+              <span className="font-bold text-retro-accent px-1">Advanced Machine Learning</span> at Scaler Academy.
             </p>
 
             {/* Skill Pills */}
@@ -269,12 +266,75 @@ export default function Home() {
                 </p>
                 <div className="flex flex-wrap gap-3 mt-auto">
                   <span className="px-4 py-1.5 bg-retro-primary/20 text-retro-primary rounded-full text-sm font-bold border border-retro-primary/50 shadow-sm">Data Analytics</span>
-                  <span className="px-4 py-1.5 bg-retro-secondary/20 text-retro-secondary rounded-full text-sm font-bold border border-retro-secondary/50 shadow-sm">Full-Stack Dev</span>
-                  <span className="px-4 py-1.5 bg-retro-accent/20 text-retro-accent rounded-full text-sm font-bold border border-retro-accent/50 shadow-sm">UI/UX Design</span>
+                  <span className="px-4 py-1.5 bg-retro-secondary/20 text-retro-secondary rounded-full text-sm font-bold border border-retro-secondary/50 shadow-sm">Business Intelligence</span>
                 </div>
               </div>
             </div>
           </TracingBeam>
+        </section>
+
+        {/* Key Milestones Section */}
+        <section id="milestones" className="relative w-full py-16 scroll-mt-24">
+          <h2 className="text-3xl md:text-5xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block drop-shadow-md mb-12">
+            Key Milestones
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+            {/* Card 1: 70% Reduction */}
+            <div className="group relative p-6 bg-black/20 border border-retro-primary/20 hover:border-retro-primary/60 rounded-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--color-primary),0.08)] hover:-translate-y-1 backdrop-blur-xl flex flex-col justify-between min-h-[220px]">
+              <div>
+                <div className="text-4xl lg:text-5xl font-extrabold text-retro-primary font-outfit mb-3 group-hover:scale-105 transition-transform duration-300 origin-left">
+                  70%
+                </div>
+                <h3 className="font-bold text-lg text-retro-text mb-2">Reporting Automation</h3>
+                <p className="text-sm text-retro-text/75 leading-relaxed">
+                  Automated manual market reporting processes, reducing the team's weekly data preparation workload by 70% and accelerating insights delivery.
+                </p>
+              </div>
+              <div className="h-1 w-0 bg-retro-primary group-hover:w-full transition-all duration-300 mt-4 rounded-full"></div>
+            </div>
+
+            {/* Card 2: 40% Speedup */}
+            <div className="group relative p-6 bg-black/20 border border-retro-accent/20 hover:border-retro-accent/60 rounded-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--color-accent),0.08)] hover:-translate-y-1 backdrop-blur-xl flex flex-col justify-between min-h-[220px]">
+              <div>
+                <div className="text-4xl lg:text-5xl font-extrabold text-retro-accent font-outfit mb-3 group-hover:scale-105 transition-transform duration-300 origin-left">
+                  40%
+                </div>
+                <h3 className="font-bold text-lg text-retro-text mb-2">Dashboard Optimization</h3>
+                <p className="text-sm text-retro-text/75 leading-relaxed">
+                  Optimized relational data models and reporting structures, speeding up dashboard load-times by 40% to improve decision-making speed.
+                </p>
+              </div>
+              <div className="h-1 w-0 bg-retro-accent group-hover:w-full transition-all duration-300 mt-4 rounded-full"></div>
+            </div>
+
+            {/* Card 3: 99%+ Uptime */}
+            <div className="group relative p-6 bg-black/20 border border-retro-primary/20 hover:border-retro-primary/60 rounded-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--color-primary),0.08)] hover:-translate-y-1 backdrop-blur-xl flex flex-col justify-between min-h-[220px]">
+              <div>
+                <div className="text-4xl lg:text-5xl font-extrabold text-retro-primary font-outfit mb-3 group-hover:scale-105 transition-transform duration-300 origin-left">
+                  99%+
+                </div>
+                <h3 className="font-bold text-lg text-retro-text mb-2">Data Quality Control</h3>
+                <p className="text-sm text-retro-text/75 leading-relaxed">
+                  Implemented robust validation and error-checking protocols, maintaining over 99% data pipeline uptime and ensuring accurate weekly reporting.
+                </p>
+              </div>
+              <div className="h-1 w-0 bg-retro-primary group-hover:w-full transition-all duration-300 mt-4 rounded-full"></div>
+            </div>
+
+            {/* Card 4: Collaborative Delivery */}
+            <div className="group relative p-6 bg-black/20 border border-retro-accent/20 hover:border-retro-accent/60 rounded-2xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--color-accent),0.08)] hover:-translate-y-1 backdrop-blur-xl flex flex-col justify-between min-h-[220px]">
+              <div>
+                <div className="text-4xl lg:text-5xl font-extrabold text-retro-accent font-outfit mb-3 group-hover:scale-105 transition-transform duration-300 origin-left">
+                  AGILE
+                </div>
+                <h3 className="font-bold text-lg text-retro-text mb-2">Collaborative Delivery</h3>
+                <p className="text-sm text-retro-text/75 leading-relaxed">
+                  Partnered within cross-functional team sprints to deliver data platform enhancements and user features, ensuring high-quality releases.
+                </p>
+              </div>
+              <div className="h-1 w-0 bg-retro-accent group-hover:w-full transition-all duration-300 mt-4 rounded-full"></div>
+            </div>
+          </div>
         </section>
 
         {/* Featured Projects Section */}
