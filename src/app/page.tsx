@@ -20,8 +20,9 @@ import { SiLeetcode, SiNetflix, SiAdobepremierepro } from "react-icons/si";
 import { useTheme } from "@/contexts/theme-context";
 import { FeaturedProjects } from "@/components/featured-projects";
 import { HeroProjectPin } from "@/components/hero-project-pin";
-import { ExperienceTabs } from "@/components/experience-tabs";
-import { EducationTimeline } from "@/components/education-timeline";
+import { ExperienceHub } from "@/components/experience-hub";
+import { EducationHub } from "@/components/education-hub";
+import { ContactHub } from "@/components/contact-hub";
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -39,8 +40,14 @@ export default function Home() {
 
   const experienceItems = [
     {
-      title: "Data Analyst",
-      subtitle: "Enigma Data, Delhi, India (Nov 2024 - May 2025)",
+      role: "Data Analyst",
+      company: "Enigma Data",
+      location: "Delhi, India",
+      duration: "Nov 2024 - May 2025",
+      status: "Completed",
+      tenureMonths: 7,
+      progress: 100,
+      skills: ["Power BI", "DAX", "Python Automation", "Selenium", "BeautifulSoup", "SQL Optimization", "Azure Blob Storage"],
       description: (
         <ul className="list-disc list-inside space-y-2">
           <li>Delivered interactive Power BI dashboards with DAX for real-time business metric visibility across e-commerce platforms (Nykaa, Amazon), empowering stakeholder decisions with self-service analytics.</li>
@@ -52,8 +59,14 @@ export default function Home() {
       ),
     },
     {
-      title: "Junior Software Engineer",
-      subtitle: "Entiovi Technologies, Kolkata, India (Jun 2023 - Aug 2024)",
+      role: "Junior Software Engineer",
+      company: "Entiovi Technologies",
+      location: "Kolkata, India",
+      duration: "Jun 2023 - Aug 2024",
+      status: "Completed",
+      tenureMonths: 15,
+      progress: 100,
+      skills: ["React.js", "Node.js", "Express.js", "RESTful APIs", "MySQL", "MongoDB", "JWT", "OAuth", "Agile Sprints"],
       description: (
         <ul className="list-disc list-inside space-y-2">
           <li>Engineered full-stack MERN stack applications with JWT/OAuth authentication for the Cleared Talent hiring platform serving enterprise clients.</li>
@@ -66,32 +79,55 @@ export default function Home() {
   ];
 
   const educationItems = [
-
     {
-      title: "Bachelor of Technology (B.Tech)",
-      subtitle: "Institute of Engineering and Management (July 2018 - Jun 2022)",
-      description: <p className="font-bold">GPA: 8.13</p>,
+      title: "Scaler Academy",
+      program: "DSML (Data Science & Machine Learning)",
+      date: "2025 - Present",
+      status: "In Progress",
+      progress: 80,
+      grade: "Active Program",
+      skills: ["Machine Learning", "Deep Learning", "Data Science", "Python", "Advanced Statistics", "Data Modeling"],
+      description: (
+        <ul className="list-disc list-inside space-y-2 text-retro-text/90">
+          <li>Pursuing advanced Data Science & ML expertise focusing on commercial viability.</li>
+          <li>Rigorous syllabus covering deep learning architectures, advanced statistics, feature engineering, and neural network tuning.</li>
+          <li>Collaborating on multi-dimensional predictive analytical pipelines and optimization algorithms.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "IEM Kolkata",
+      program: "Bachelor of Technology (B.Tech)",
+      date: "2018 - 2022",
+      status: "Completed",
+      progress: 100,
+      grade: "GPA: 8.13",
+      skills: ["Computer Science", "Software Engineering", "Data Structures", "Relational Databases", "Algorithms"],
+      description: (
+        <p className="text-retro-text/90 leading-relaxed font-medium">
+          Acquired solid conceptual and hands-on grounding in computing paradigms, software engineering cycles, object-oriented systems, and core data architecture models. Graduated with a highly competitive 8.13 GPA, setting the baseline for subsequent data engineering ventures.
+        </p>
+      ),
     },
     {
       title: "Certifications",
-      subtitle: "Various platforms",
+      program: "Data Analytics & Python Certifications",
+      date: "Various Platforms",
+      status: "Completed",
+      progress: 100,
+      grade: "Certified Professional",
+      skills: ["Power BI", "DAX", "SQL Automation", "Selenium", "BeautifulSoup", "API Integration"],
       description: (
-        <ul className="list-disc list-inside space-y-2">
-          <li>Microsoft Power BI Data Analyst</li>
-          <li>Python for Data Science (Learnbay)</li>
+        <ul className="list-disc list-inside space-y-3 text-retro-text/90">
+          <li>
+            <strong className="text-retro-primary">Microsoft Power BI Data Analyst:</strong> Industry credential certifying advanced capability in data ingestion, relationships modeling, security row filtering, and complex DAX measures.
+          </li>
+          <li>
+            <strong className="text-retro-secondary">Python for Data Science (Learnbay):</strong> Rigorous industry specialization program validating end-to-end automation, scraper engines, and predictive analytics applications.
+          </li>
         </ul>
       ),
     },
-    {
-      title: "DSML (Data Science & Machine Learning) Program",
-      subtitle: <span className="text-retro-primary font-bold">Scaler Academy (Aug 2025 - Present)</span>,
-      description: (
-        <ul className="list-disc list-inside space-y-2 text-retro-text font-medium drop-shadow-sm">
-          <li>Pursuing advanced Data Science & ML expertise.</li>
-          <li>Focused on advanced topics in data science, machine learning, and deep learning.</li>
-        </ul>
-      ),
-    }
   ];
 
   const skillItems = [
@@ -146,9 +182,9 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section id="hero" className="relative z-10 w-full min-h-[100dvh] flex flex-col p-6 lg:p-12 mx-auto overflow-hidden pb-12 pt-24 mt-2">
+      <section id="hero" className="relative z-10 w-full min-h-[85vh] flex flex-col p-6 lg:p-12 mx-auto overflow-hidden pb-6 pt-24 mt-2">
 
-        <div className="w-full my-auto flex flex-col lg:flex-row items-center justify-between z-10 max-w-7xl mx-auto gap-12 pt-16">
+        <div className="w-full my-auto flex flex-col lg:flex-row items-center justify-between z-10 max-w-7xl mx-auto gap-12 pt-8">
 
           {/* Left Panel: Text & CTA */}
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
@@ -250,7 +286,7 @@ export default function Home() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* About Me Section */}
-        <section id="about" className="relative w-full min-h-[100dvh] flex flex-col justify-center max-w-4xl mx-auto py-24">
+        <section id="about" className="relative w-full flex flex-col justify-center max-w-4xl mx-auto py-12 md:py-16 scroll-mt-24">
           <TracingBeam className="px-6">
             <div className="w-full antialiased pt-4 lg:pt-0">
               <h2 className="text-3xl md:text-5xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block drop-shadow-md mb-8">About Me</h2>
@@ -273,8 +309,8 @@ export default function Home() {
         </section>
 
         {/* Key Milestones Section */}
-        <section id="milestones" className="relative w-full py-16 scroll-mt-24">
-          <h2 className="text-3xl md:text-5xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block drop-shadow-md mb-12">
+        <section id="milestones" className="relative w-full py-10 md:py-12 scroll-mt-24">
+          <h2 className="text-3xl md:text-5xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block drop-shadow-md mb-6">
             Key Milestones
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
@@ -337,29 +373,29 @@ export default function Home() {
         </section>
 
         {/* Featured Projects Section */}
-        <section id="projects" className="relative w-full flex flex-col justify-center py-24">
+        <section id="projects" className="relative w-full flex flex-col justify-center py-12 md:py-16 scroll-mt-24">
           <FeaturedProjects />
         </section>
 
         {/* Experiences Section */}
-        <section id="experiences" className="relative w-full min-h-[100dvh] flex flex-col justify-center py-24">
+        <section id="experiences" className="relative w-full flex flex-col justify-center py-12 md:py-16 scroll-mt-24">
           <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-4">
             <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block">Experiences</h2>
           </div>
-          <ExperienceTabs items={experienceItems} />
+          <ExperienceHub items={experienceItems} />
         </section>
 
         {/* Education Section */}
-        <section id="education" className="relative w-full flex flex-col justify-center py-24">
+        <section id="education" className="relative w-full flex flex-col justify-center py-12 md:py-16 scroll-mt-24">
           <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-4">
             <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block">Education & Development</h2>
           </div>
-          <EducationTimeline items={educationItems} />
+          <EducationHub items={educationItems} />
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden py-24">
-          <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block mb-12 self-start">Skills</h2>
+        <section id="skills" className="relative w-full flex flex-col items-center justify-center overflow-hidden py-12 md:py-16 scroll-mt-24">
+          <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block mb-6 self-start">Skills</h2>
           <InfiniteMovingCards
             items={skillItems}
             direction="right"
@@ -373,8 +409,8 @@ export default function Home() {
         </section>
 
         {/* Hobbies Section */}
-        <section id="hobbies" className="relative w-full min-h-[100dvh] flex flex-col justify-center py-24">
-          <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-12">
+        <section id="hobbies" className="relative w-full flex flex-col justify-center py-12 md:py-16 scroll-mt-24">
+          <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-6">
             <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block">Beyond the Code</h2>
             <p className="mt-4 text-retro-text/70 max-w-2xl text-lg">Exploring creativity and narratives through various mediums when I'm away from the keyboard.</p>
           </div>
@@ -418,68 +454,11 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative w-full z-10 scroll-mt-32">
-          <LampContainer>
-            <motion.div
-              initial={{ opacity: 0.5, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
-              className="flex flex-col items-center justify-center text-center w-full max-w-5xl z-50 pt-12 lg:pt-24 px-6 overflow-hidden"
-            >
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-outfit text-retro-text mb-6">
-                Let's Connect<span className="text-retro-primary">.</span>
-              </h2>
-              <p className="text-retro-text/60 font-mono text-base md:text-lg max-w-md mx-auto mb-16">
-                Have a question ? <br />Drop me a message to get started.
-              </p>
-
-              {/* Contact Cards */}
-              <div className="w-full flex flex-col md:flex-row gap-8 justify-center items-center">
-                {/* Email Card */}
-                <a href="mailto:ganguly2904saji@gmail.com" className="group w-full md:w-1/2 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 p-6 sm:p-8 bg-black/20 border border-retro-primary/30 hover:border-retro-primary hover:bg-retro-primary/10 rounded-2xl transition-all hover:-translate-y-1 shadow-2xl backdrop-blur-xl">
-                  <div className="w-14 h-14 bg-retro-primary/20 rounded-full flex shrink-0 items-center justify-center group-hover:bg-retro-primary/40 transition-colors">
-                    <Mail className="w-6 h-6 text-retro-primary" />
-                  </div>
-                  <div className="flex-1 overflow-hidden">
-                    <p className="text-xs text-retro-text/50 font-mono uppercase tracking-widest mb-2">Email Me At</p>
-                    <p className="text-lg md:text-xl font-bold font-outfit text-retro-text group-hover:text-retro-primary transition-colors truncate">ganguly2904saji@gmail.com</p>
-                  </div>
-                </a>
-
-                {/* Phone Card */}
-                <a href="tel:+916290919566" className="group w-full md:w-1/2 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 p-6 sm:p-8 bg-black/20 border border-retro-accent/30 hover:border-retro-accent hover:bg-retro-accent/10 rounded-2xl transition-all hover:-translate-y-1 shadow-2xl backdrop-blur-xl">
-                  <div className="w-14 h-14 bg-retro-accent/20 rounded-full flex shrink-0 items-center justify-center group-hover:bg-retro-accent/40 transition-colors">
-                    <Phone className="w-6 h-6 text-retro-accent" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-retro-text/50 font-mono uppercase tracking-widest mb-2">Call Me At</p>
-                    <p className="text-lg md:text-xl font-bold font-outfit text-retro-text group-hover:text-retro-accent transition-colors">+91 6290919566</p>
-                  </div>
-                </a>
-              </div>
-
-              {/* Social Links */}
-              <div className="w-full flex flex-col items-center mt-12 border-t border-retro-secondary/30 pt-10">
-                <p className="text-xs font-mono text-retro-text/50 mb-6 uppercase tracking-widest">Also Find Me On</p>
-                <div className="flex gap-6" suppressHydrationWarning>
-                  <a href="https://github.com/SajiGanguly" target="_blank" rel="noopener noreferrer" className="p-4 bg-black/20 border border-retro-text/10 rounded-full text-retro-text hover:text-white hover:bg-black hover:border-black hover:-translate-y-2 transition-all shadow-xl backdrop-blur-md">
-                    <FaGithub className="w-6 h-6" />
-                  </a>
-                  <a href="https://www.linkedin.com/in/29saji-ganguly-719613169" target="_blank" rel="noopener noreferrer" className="p-4 bg-black/20 border border-retro-text/10 rounded-full text-retro-text hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:-translate-y-2 transition-all shadow-xl backdrop-blur-md">
-                    <FaLinkedin className="w-6 h-6" />
-                  </a>
-                  <a href="https://leetcode.com/u/saji2904/" target="_blank" rel="noopener noreferrer" className="p-4 bg-black/20 border border-retro-text/10 rounded-full text-retro-text hover:text-[#FFA116] hover:bg-black hover:border-black hover:-translate-y-2 transition-all shadow-xl backdrop-blur-md">
-                    <SiLeetcode className="w-6 h-6" />
-                  </a>
-                </div>
-              </div>
-
-            </motion.div>
-          </LampContainer>
+        <section id="contact" className="relative w-full py-12 md:py-16 scroll-mt-24">
+          <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-6">
+            <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block">Let's Connect</h2>
+          </div>
+          <ContactHub />
         </section>
       </div>
 
