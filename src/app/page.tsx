@@ -23,6 +23,8 @@ import { HeroProjectPin } from "@/components/hero-project-pin";
 import { ExperienceHub } from "@/components/experience-hub";
 import { EducationHub } from "@/components/education-hub";
 import { ContactHub } from "@/components/contact-hub";
+import { RotatingCoinRing } from "@/components/rotating-coin-ring";
+
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -182,107 +184,111 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section id="hero" className="relative z-10 w-full min-h-[85vh] flex flex-col p-6 lg:p-12 mx-auto overflow-hidden pb-6 pt-24 mt-2">
+      <section id="hero" className="relative w-full min-h-[92vh] flex flex-col items-center justify-center p-4 md:p-6 lg:p-12 mx-auto overflow-hidden pb-12 pt-28">
+        
+        {/* Dynamic Rotating Tech/Data Coins Ring */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <RotatingCoinRing />
+        </div>
 
-        <div className="w-full my-auto flex flex-col lg:flex-row items-center justify-between z-10 max-w-7xl mx-auto gap-12 pt-8">
+        {/* Dynamic Center Backdrop Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[450px] md:h-[450px] bg-retro-primary/10 rounded-full blur-[100px] md:blur-[140px] pointer-events-none z-0"></div>
 
-          {/* Left Panel: Text & CTA */}
-          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+        {/* Cinematic Content Block - Set pointer-events-none so mouse events pass through to coins */}
+        {/* The zIndex is set to 10 so it overlays back coins (zIndex 5-9) and sits behind front coins (zIndex 11-15) */}
+        <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center pointer-events-none select-none py-8 md:py-12">
+          
+          {/* Pulsating Analytics Visualizer Monogram / Logo */}
+          <div className="flex gap-2 items-end justify-center h-8 mb-6 pointer-events-auto hover:scale-105 transition-transform duration-300">
+            <div className="w-1.5 md:w-2 bg-retro-primary rounded-full animate-[pulse_1.5s_infinite] h-8 shadow-[0_0_8px_var(--color-primary)]"></div>
+            <div className="w-1.5 md:w-2 bg-retro-accent rounded-full animate-[pulse_1.8s_infinite] h-5 shadow-[0_0_8px_var(--color-accent)]"></div>
+            <div className="w-1.5 md:w-2 bg-retro-secondary rounded-full animate-[pulse_1.2s_infinite] h-6 shadow-[0_0_8px_var(--color-secondary)]"></div>
+          </div>
 
+          {/* Subtitle above Header */}
+          <h2 className="text-xs md:text-sm font-bold tracking-[0.25em] text-retro-text/60 uppercase mb-4 max-w-lg font-mono">
+            Data Analyst & Analytics Engineer
+          </h2>
 
-            <h2 className="text-lg md:text-xl font-bold tracking-widest text-retro-text opacity-70 uppercase mt-4">
-              Data Analyst & Analytics Engineer
-            </h2>
+          {/* Large Bold Cinematic Brand Header */}
+          <motion.h1
+            initial={{ y: 35, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-retro-text uppercase font-outfit leading-[1] max-w-4xl mx-auto"
+          >
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-retro-primary via-retro-accent to-retro-secondary drop-shadow-sm pb-1">
+              SAJI GANGULY
+            </span>
+          </motion.h1>
 
-            <div className="relative -ml-1 text-center lg:text-left w-full lg:w-auto overflow-hidden py-2">
-              <motion.h1
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                className="text-5xl sm:text-6xl lg:text-7xl font-black font-outfit text-transparent bg-clip-text bg-gradient-to-r from-retro-primary to-retro-accent tracking-tighter leading-tight text-center lg:text-left"
-              >
-                SAJI GANGULY
-              </motion.h1>
-            </div>
+          {/* Subtag/Tagline directly below Name */}
+          <h3 className="text-sm sm:text-base md:text-lg font-bold tracking-[0.18em] text-retro-text/95 font-mono mt-4 uppercase max-w-2xl text-center">
+            DATA × ANALYTICS FOR DECISIONS & CONTROL
+          </h3>
 
-            <p className="text-lg md:text-xl text-retro-text/80 font-light leading-relaxed max-w-lg mt-4 [font-family:var(--font-geist-sans)]">
-              Data Analyst with experience in creating dashboards, working with data, and generating insights using <span className="font-bold text-retro-primary px-1">Power BI, SQL, and Python</span>.
-            </p>
+          {/* Description Copy */}
+          <p className="text-base sm:text-lg md:text-xl text-retro-text/75 font-light leading-relaxed max-w-2xl mx-auto mt-6 px-4 [font-family:var(--font-geist-sans)]">
+            I design <span className="font-semibold text-retro-primary">automated pipelines</span>, <span className="font-semibold text-retro-secondary">interactive dashboards</span> and <span className="font-semibold text-retro-accent">analytics systems</span> for companies where decisions cost millions.
+          </p>
 
-            {/* Skill Pills */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mt-6">
-              {['PYTHON', 'SQL', 'POWER BI', 'REACT', 'NODE.JS'].map((skill) => (
-                <span key={skill} className="px-4 py-1.5 border border-retro-accent/30 text-retro-accent text-xs font-bold font-mono rounded-md hover:bg-retro-accent/20 transition-colors cursor-default backdrop-blur-sm shadow-sm">
-                  {skill}
-                </span>
-              ))}
-            </div>
+          {/* Skill Pills - Center Inline */}
+          <div className="flex flex-wrap justify-center gap-2 mt-8 max-w-xl pointer-events-auto">
+            {['PYTHON', 'SQL', 'POWER BI', 'PANDAS', 'SELENIUM', 'GITHUB'].map((skill) => (
+              <span key={skill} className="px-3 py-1 border border-retro-accent/20 text-retro-accent/80 hover:text-retro-accent hover:border-retro-accent/40 text-[10px] font-bold font-mono rounded transition-colors cursor-default backdrop-blur-sm shadow-sm bg-retro-bg/30">
+                {skill}
+              </span>
+            ))}
+          </div>
 
-            {/* Resume Download CTA */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="mt-8 pt-4 flex justify-center lg:justify-start w-full"
+          {/* Brackets Framed Cyberpunk CTA Buttons */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center pointer-events-auto"
+          >
+            <a
+              href="/resume/Saji_Ganguly_Resume.pdf"
+              download="Saji_Ganguly_Resume.pdf"
+              className="relative px-8 py-3 bg-retro-bg/40 backdrop-blur-md border border-retro-text/20 hover:border-retro-primary hover:text-retro-primary text-retro-text font-mono text-sm tracking-widest uppercase transition-all duration-300 group flex items-center gap-3 active:scale-95 shadow-md hover:shadow-lg"
             >
-              <a
-                href="/resume/Saji_Ganguly_Resume.pdf"
-                download="Saji_Ganguly_Resume.pdf"
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-retro-primary to-retro-accent rounded-full text-white font-black tracking-wide text-lg overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              >
-                {/* Shine effect overlay */}
-                <div className="absolute inset-0 -translate-x-full skew-x-12 bg-white/30 group-hover:animate-[shimmer_1s_forwards]"></div>
-                <span>DOWNLOAD RESUME</span>
-                <Download className="w-5 h-5 group-hover:-translate-y-1 group-hover:scale-110 transition-all duration-300" />
-              </a>
-            </motion.div>
+              {/* Sleek Custom Corner Brackets */}
+              <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-retro-text/30 group-hover:border-retro-primary transition-all duration-300"></span>
+              <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-retro-text/30 group-hover:border-retro-primary transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-retro-text/30 group-hover:border-retro-primary transition-all duration-300"></span>
+              <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-retro-text/30 group-hover:border-retro-primary transition-all duration-300"></span>
+              
+              <span>DOWNLOAD RESUME</span>
+              <Download className="w-4 h-4 group-hover:-translate-y-[2px] transition-transform duration-300" />
+            </a>
 
-
-          </div>
-
-          {/* Right Panel: 3D Globe in Grid */}
-          <div className="w-full lg:w-1/2 flex items-center justify-center relative mt-16 lg:mt-0 min-h-[400px] lg:min-h-[500px]">
-            {/* Background Glow */}
-            <div className="absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-retro-primary/5 rounded-full blur-[100px]"></div>
-            <div className="absolute w-[250px] h-[250px] md:w-[350px] md:h-[350px] bg-retro-accent/5 rounded-full blur-[80px] -bottom-10 -right-10"></div>
-
-            {/* Grid background & Globe Container */}
-            <div className="relative w-full max-w-lg aspect-square flex items-center justify-center p-4 sm:p-8">
-              {/* Grid outline/frame */}
-              <div className="absolute inset-8 sm:inset-4 border border-retro-text/10 rounded-3xl bg-black/20 backdrop-blur-sm overflow-hidden flex items-center justify-center shadow-[0_0_30px_rgba(0,0,0,0.5)] group">
-
-                {/* Decorative Grid Lines */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080801a_1px,transparent_1px),linear-gradient(to_bottom,#8080801a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none mix-blend-overlay"></div>
-
-                {/* 4 corner accents */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-retro-primary/80 rounded-tl-3xl pointer-events-none"></div>
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-retro-primary/80 rounded-tr-3xl pointer-events-none"></div>
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-retro-accent/80 rounded-bl-3xl pointer-events-none"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-retro-accent/80 rounded-br-3xl pointer-events-none"></div>
-
-                {/* Decorative HUD Elements */}
-                <div className="absolute top-4 right-4 text-[10px] font-mono text-retro-primary/60 tracking-widest hidden sm:block">SYS.GLOBAL.VIEW</div>
-                <div className="absolute bottom-4 left-4 text-[10px] font-mono text-retro-accent/60 tracking-widest hidden sm:block">LAT: VAR // LNG: VAR</div>
-
-                {/* The Interactive Project Pin */}
-                <div className="relative w-full h-full z-10 flex items-center justify-center">
-                  <HeroProjectPin />
-                </div>
-              </div>
-
-              {/* ONLINE Badge (Moved out of the grid box) */}
-              <div className="absolute top-4 right-0 bg-retro-bg/90 backdrop-blur-xl border border-retro-text/10 px-4 py-2 rounded-full flex items-center gap-2 shadow-xl z-20 hover:scale-105 transition-transform cursor-default sm:right-0">
-                <div className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-retro-accent opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-retro-accent shadow-[0_0_10px_var(--color-accent)]"></span>
-                </div>
-                <span className="text-retro-accent text-xs font-bold font-mono tracking-wider">ONLINE</span>
-              </div>
-            </div>
-          </div>
+            <a
+              href="#contact"
+              className="px-6 py-3 border border-transparent hover:border-retro-text/10 text-retro-text/60 hover:text-retro-text font-mono text-xs tracking-widest uppercase transition-all duration-300 flex items-center gap-2 active:scale-95"
+            >
+              <span>CONNECT WITH ME</span>
+              <MoveRight className="w-3.5 h-3.5" />
+            </a>
+          </motion.div>
 
         </div>
+
+        {/* Glassmorphic Profile Overlay (Bottom Left Corner) */}
+        <div className="fixed bottom-6 left-6 z-45 hidden xl:flex items-center gap-3.5 bg-retro-bg/85 backdrop-blur-xl border border-retro-text/10 p-3.5 rounded-2xl max-w-[320px] shadow-2xl hover:scale-[1.02] transition-all cursor-default select-none group">
+          <div className="relative flex-shrink-0 w-11 h-11 rounded-full bg-retro-primary/10 border border-retro-primary/30 flex items-center justify-center font-mono text-xs font-bold text-retro-primary group-hover:border-retro-primary/50 transition-colors">
+            SG
+            <span className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 bg-retro-accent rounded-full border-2 border-retro-bg shadow-[0_0_8px_var(--color-accent)] animate-pulse"></span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-[9px] font-mono text-retro-text/50 uppercase tracking-widest font-bold">SYSTEM.STATUS // ONLINE</span>
+            <span className="text-[11px] font-medium text-retro-text/85 mt-0.5 leading-relaxed font-sans">
+              I make complex data structures simple for stakeholders.
+            </span>
+          </div>
+        </div>
       </section>
+
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* About Me Section */}
