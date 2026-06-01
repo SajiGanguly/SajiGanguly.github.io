@@ -206,8 +206,8 @@ export default function Home() {
           </div>
 
           {/* Subtitle above Header */}
-          <h2 className="text-xs md:text-sm font-bold tracking-[0.25em] text-retro-text/60 uppercase mb-4 max-w-lg font-mono">
-            Data Analyst & Analytics Engineer
+          <h2 className="text-[10px] sm:text-xs md:text-sm font-bold tracking-wider sm:tracking-[0.2em] md:tracking-[0.25em] text-retro-text/60 uppercase mb-4 max-w-md sm:max-w-lg font-mono px-2">
+            Aspiring Data Analyst and Analytics engineer
           </h2>
 
           {/* Large Bold Cinematic Brand Header */}
@@ -215,7 +215,7 @@ export default function Home() {
             initial={{ y: 35, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-retro-text uppercase font-outfit leading-[1] max-w-4xl mx-auto"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-retro-text uppercase font-outfit leading-[1] max-w-4xl mx-auto"
           >
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-retro-primary via-retro-accent to-retro-secondary drop-shadow-sm pb-1">
               SAJI GANGULY
@@ -223,7 +223,7 @@ export default function Home() {
           </motion.h1>
 
           {/* Subtag/Tagline directly below Name */}
-          <h3 className="text-sm sm:text-base md:text-lg font-bold tracking-[0.18em] text-retro-text/95 font-mono mt-4 uppercase max-w-2xl text-center">
+          <h3 className="text-[11px] sm:text-sm md:text-base lg:text-lg font-bold tracking-wider sm:tracking-[0.15em] md:tracking-[0.18em] text-retro-text/95 font-mono mt-4 uppercase max-w-xs sm:max-w-xl md:max-w-2xl text-center px-4">
             DATA × ANALYTICS FOR DECISIONS & CONTROL
           </h3>
 

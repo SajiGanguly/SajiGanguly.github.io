@@ -93,8 +93,8 @@ export const RotatingCoinRing = () => {
       if (!containerRef.current) return;
       const w = containerRef.current.offsetWidth;
       // Calculate responsive horizontal radius (rx) and vertical tilt radius (ry)
-      const rx = Math.min(460, Math.max(140, w * 0.36));
-      const ry = rx * 0.28; // Tilted angle factor
+      const rx = w < 640 ? Math.min(125, w * 0.34) : Math.min(460, Math.max(140, w * 0.36));
+      const ry = w < 640 ? rx * 0.32 : rx * 0.28; // Tilted angle factor (slightly taller on mobile for spacing)
       setDimensions({ rx, ry });
     };
 
@@ -276,7 +276,7 @@ const Coin = React.forwardRef<HTMLDivElement, CoinProps>(
         >
           {/* Glassmorphic Coin Body */}
           <div
-            className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center border bg-retro-bg/60 backdrop-blur-md transition-all duration-300 relative"
+            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center border bg-retro-bg/60 backdrop-blur-md transition-all duration-300 relative"
             style={{
               borderColor: isHovered ? coin.color : "rgba(var(--color-text), 0.15)",
               boxShadow: isHovered
@@ -295,7 +295,7 @@ const Coin = React.forwardRef<HTMLDivElement, CoinProps>(
                 transform: "translateZ(20px)", // Elevate icon in 3D space
               }}
             >
-              <Icon className="w-8 h-8 md:w-9 md:h-9" />
+              <Icon className="w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9" />
             </div>
           </div>
 
