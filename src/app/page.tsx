@@ -185,7 +185,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="hero" className="relative w-full min-h-[92vh] flex flex-col items-center justify-center p-4 md:p-6 lg:p-12 mx-auto overflow-hidden pb-12 pt-28">
-        
+
         {/* Dynamic Rotating Tech/Data Coins Ring */}
         <div className="absolute inset-0 w-full h-full z-0">
           <RotatingCoinRing />
@@ -197,7 +197,7 @@ export default function Home() {
         {/* Cinematic Content Block - Set pointer-events-none so mouse events pass through to coins */}
         {/* The zIndex is set to 10 so it overlays back coins (zIndex 5-9) and sits behind front coins (zIndex 11-15) */}
         <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center pointer-events-none select-none py-8 md:py-12">
-          
+
           {/* Pulsating Analytics Visualizer Monogram / Logo */}
           <div className="flex gap-2 items-end justify-center h-8 mb-6 pointer-events-auto hover:scale-105 transition-transform duration-300">
             <div className="w-1.5 md:w-2 bg-retro-primary rounded-full animate-[pulse_1.5s_infinite] h-8 shadow-[0_0_8px_var(--color-primary)]"></div>
@@ -258,7 +258,7 @@ export default function Home() {
               <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-retro-text/30 group-hover:border-retro-primary transition-all duration-300"></span>
               <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-retro-text/30 group-hover:border-retro-primary transition-all duration-300"></span>
               <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-retro-text/30 group-hover:border-retro-primary transition-all duration-300"></span>
-              
+
               <span>DOWNLOAD RESUME</span>
               <Download className="w-4 h-4 group-hover:-translate-y-[2px] transition-transform duration-300" />
             </a>
