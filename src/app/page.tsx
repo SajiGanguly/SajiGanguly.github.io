@@ -42,6 +42,30 @@ export default function Home() {
 
   const experienceItems = [
     {
+      role: "Trainee - Reporting & Automation",
+      company: "AtkinsRéalis",
+      location: "Pune District, India",
+      duration: "Jul 2026 - Present",
+      status: "Current",
+      tenureMonths: 2,
+      progress: 25,
+      skills: [
+        "Reporting & Automation",
+        "Onsite Training",
+        "Process Automation",
+        "Data Analytics",
+        "Enterprise Workflows",
+        "Dashboards & Reporting",
+      ],
+      description: (
+        <ul className="list-disc list-inside space-y-2 font-mono">
+          <li>Currently in the training phase, receiving comprehensive onsite training within the Reporting and Automation Team at AtkinsRéalis.</li>
+          <li>Gaining hands-on expertise in enterprise reporting frameworks, automated workflow optimization, and analytics systems.</li>
+          <li>Collaborating with cross-functional teams to streamline data-driven processes and deliver robust automation solutions.</li>
+        </ul>
+      ),
+    },
+    {
       role: "Data Analyst",
       company: "Enigma Data",
       location: "Delhi, India",
