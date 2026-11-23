@@ -20,10 +20,11 @@ import { SiLeetcode, SiNetflix, SiAdobepremierepro } from "react-icons/si";
 import { useTheme } from "@/contexts/theme-context";
 import { FeaturedProjects } from "@/components/featured-projects";
 import { HeroProjectPin } from "@/components/hero-project-pin";
-import { ExperienceHub } from "@/components/experience-hub";
+import { ExperienceHub, ExperienceItem } from "@/components/experience-hub";
 import { EducationHub } from "@/components/education-hub";
 import { ContactHub } from "@/components/contact-hub";
 import { RotatingCoinRing } from "@/components/rotating-coin-ring";
+import { calculateTotalExperience } from "@/lib/experience";
 
 
 export default function Home() {
@@ -40,18 +41,16 @@ export default function Home() {
     { title: "Contact", icon: <Contact className="h-full w-full text-retro-text" />, href: "#contact" },
   ];
 
-  const experienceItems = [
+  const experienceItems: ExperienceItem[] = [
     {
-      role: "Trainee - Reporting & Automation",
+      role: "Graduate Engineer",
       company: "AtkinsRéalis",
       location: "Pune District, India",
-      duration: "Jul 2026 - Present",
+      // Date and month are dynamically set from the time of this update (Nov 2026 - Present)
       status: "Current",
-      tenureMonths: 2,
-      progress: 25,
       skills: [
         "Reporting & Automation",
-        "Onsite Training",
+        "Incident Reporting Dashboards",
         "Process Automation",
         "Data Analytics",
         "Enterprise Workflows",
@@ -59,7 +58,7 @@ export default function Home() {
       ],
       description: (
         <ul className="list-disc list-inside space-y-2 font-mono">
-          <li>Currently in the training phase, receiving comprehensive onsite training within the Reporting and Automation Team at AtkinsRéalis.</li>
+          <li>Currently working on Incident reporting dashboards within the Reporting and Automation Team at AtkinsRéalis.</li>
           <li>Gaining hands-on expertise in enterprise reporting frameworks, automated workflow optimization, and analytics systems.</li>
           <li>Collaborating with cross-functional teams to streamline data-driven processes and deliver robust automation solutions.</li>
         </ul>
@@ -71,8 +70,6 @@ export default function Home() {
       location: "Delhi, India",
       duration: "Nov 2024 - May 2025",
       status: "Completed",
-      tenureMonths: 7,
-      progress: 100,
       skills: ["Power BI", "DAX", "Python Automation", "Selenium", "BeautifulSoup", "SQL Optimization", "Azure Blob Storage"],
       description: (
         <ul className="list-disc list-inside space-y-2">
@@ -90,8 +87,6 @@ export default function Home() {
       location: "Kolkata, India",
       duration: "Jun 2023 - Aug 2024",
       status: "Completed",
-      tenureMonths: 15,
-      progress: 100,
       skills: ["React.js", "Node.js", "Express.js", "RESTful APIs", "MySQL", "MongoDB", "JWT", "OAuth", "Agile Sprints"],
       description: (
         <ul className="list-disc list-inside space-y-2">
@@ -103,6 +98,10 @@ export default function Home() {
       ),
     },
   ];
+
+  const totalExperience = React.useMemo(() => {
+    return calculateTotalExperience(experienceItems);
+  }, [experienceItems]);
 
   const educationItems = [
     {
@@ -322,7 +321,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-5xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block drop-shadow-md mb-8">About Me</h2>
               <div className="bg-retro-bg/80 border-retro-secondary/50 border-2 rounded-xl p-6 md:p-8 shadow-lg backdrop-blur-sm">
                 <p className="text-lg text-retro-text mb-4 opacity-90 leading-relaxed">
-                  Results-driven Data Analyst with 2+ years building data-driven applications, automated dashboards, and highly optimized data processes. Skilled in bridging business requirements with technical implementation — from interactive Power BI dashboards to automated Python web-scraping pipelines and robust database structures.
+                  Results-driven Data Analyst with {totalExperience.yearsPlus} building data-driven applications, automated dashboards, and highly optimized data processes. Skilled in bridging business requirements with technical implementation — from interactive Power BI dashboards to automated Python web-scraping pipelines and robust database structures.
                 </p>
                 <p className="text-lg text-retro-text mb-6 opacity-90 leading-relaxed">
                   Adept at cross-functional collaboration, agile delivery, and cloud-integrated data solutions. Currently pursuing advanced Data Science & Machine Learning expertise at Scaler Academy to further hone my analytical capabilities.
@@ -409,8 +408,12 @@ export default function Home() {
 
         {/* Experiences Section */}
         <section id="experiences" className="relative w-full flex flex-col justify-center py-12 md:py-16 scroll-mt-24">
-          <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-4">
+          <div className="w-full max-w-5xl mx-auto pl-4 md:pl-0 mb-4 flex flex-wrap items-end justify-between gap-4">
             <h2 className="text-4xl font-bold font-serif text-retro-text border-b-4 border-retro-primary pb-2 inline-block">Experiences</h2>
+            <div className="flex items-center gap-2 font-mono text-xs text-retro-accent bg-retro-accent/10 border border-retro-accent/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
+              <span className="text-retro-text/60">Total Tenure:</span>
+              <span className="font-bold text-retro-text">{totalExperience.formatted.medium} ({totalExperience.yearsPlus})</span>
+            </div>
           </div>
           <ExperienceHub items={experienceItems} />
         </section>

@@ -1,21 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Briefcase, Calendar, MapPin, Award, Building2, CheckCircle2 } from "lucide-react";
+import { resolveExperienceItem, ExperienceItemInput, ResolvedExperienceItem } from "@/lib/experience";
 
-export interface ExperienceItem {
-  role: string;
-  company: string;
-  location: string;
-  duration: string;
-  status: "Completed" | "Current" | string;
-  tenureMonths: number;
-  progress: number; // 0 to 100
-  skills: string[];
-  description: React.ReactNode;
-}
+export type ExperienceItem = ExperienceItemInput;
 
 export const ExperienceHub = ({
   items,
@@ -25,6 +16,11 @@ export const ExperienceHub = ({
   className?: string;
 }) => {
   const [activeTab, setActiveTab] = useState(0);
+
+  // Dynamically resolve tenure and progress for all items
+  const resolvedItems: ResolvedExperienceItem[] = useMemo(() => {
+    return items.map((item) => resolveExperienceItem(item));
+  }, [items]);
 
   // SVG Circular Constants
   const radius = 28;
@@ -40,7 +36,7 @@ export const ExperienceHub = ({
           {/* LEFT: Tab Navigation Controls */}
           {/* Desktop Version: Vertical Sidebar Stack */}
           <div className="hidden md:flex md:col-span-4 flex-col gap-3 relative z-10">
-            {items.map((item, idx) => {
+            {resolvedItems.map((item, idx) => {
               const isActive = activeTab === idx;
               const strokeDashoffset = circumference - (item.progress / 100) * circumference;
 
@@ -106,8 +102,8 @@ export const ExperienceHub = ({
                         transition={{ duration: 0.8, ease: "easeOut" }}
                       />
                     </svg>
-                    <span className="absolute text-[8px] font-mono font-bold text-retro-text/80">
-                      {item.tenureMonths}m
+                    <span className="absolute text-[8px] font-mono font-bold text-retro-text/80 text-center leading-tight">
+                      {item.formattedTenure.short}
                     </span>
                   </div>
                 </button>
@@ -117,7 +113,7 @@ export const ExperienceHub = ({
 
           {/* Mobile Version: Horizontal Tab Slider */}
           <div className="flex md:hidden w-full overflow-x-auto gap-2 pb-3 scrollbar-none snap-x snap-mandatory relative z-10">
-            {items.map((item, idx) => {
+            {resolvedItems.map((item, idx) => {
               const isActive = activeTab === idx;
               return (
                 <button
@@ -139,7 +135,7 @@ export const ExperienceHub = ({
                   )}
                   <span className="relative z-10 font-serif">{item.company}</span>
                   <span className="relative z-10 text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-black/30 text-retro-accent">
-                    {item.tenureMonths} mos
+                    {item.formattedTenure.medium}
                   </span>
                 </button>
               );
@@ -149,7 +145,7 @@ export const ExperienceHub = ({
           {/* RIGHT: Detailed Content Panel with slide animations */}
           <div className="col-span-1 md:col-span-8 w-full min-h-[380px]">
             <AnimatePresence mode="wait">
-              {items.map((item, idx) => {
+              {resolvedItems.map((item, idx) => {
                 if (idx !== activeTab) return null;
                 const strokeDashoffset = circumference - (item.progress / 100) * circumference;
 
@@ -230,7 +226,8 @@ export const ExperienceHub = ({
                         </div>
                         <div className="flex flex-col">
                           <span className="text-[10px] font-mono text-retro-text/45 uppercase tracking-wider">Tenure</span>
-                          <span className="text-sm font-black text-retro-accent">{item.status.toUpperCase()}</span>
+                          <span className="text-sm font-black text-retro-accent">{item.formattedTenure.medium}</span>
+                          <span className="text-[10px] font-mono text-retro-text/60 tracking-wider">{item.status.toUpperCase()}</span>
                         </div>
                       </div>
                     </div>
